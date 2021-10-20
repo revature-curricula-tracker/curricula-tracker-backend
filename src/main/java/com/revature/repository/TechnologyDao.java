@@ -1,5 +1,9 @@
 package com.revature.repository;
 
-public class TechnologyDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.revature.model.Technology;
+
+public interface TechnologyDao extends JpaRepository<Technology, Integer>{
 
 }
