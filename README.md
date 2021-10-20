@@ -1,1 +1,1 @@
-# revature-curricula-backend
+# curricula-tracker-backend
