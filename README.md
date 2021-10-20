@@ -2,13 +2,20 @@
 
 # Dependencies 
 
-Spring Web
-Spring Cloud Sleuth
-Spring Data JPA
-JUnit
-H2 Database
-Postgres
-Zipkin
-Micrometer + Prometheus
+* Spring Web
+
+* Spring Cloud Sleuth
+
+* Spring Data JPA
+
+* JUnit
+
+* H2 Database
+
+* Postgres
+
+* Zipkin
+
+* Micrometer + Prometheus
 
 #Technologies
