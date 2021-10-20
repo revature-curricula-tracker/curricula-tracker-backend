@@ -31,9 +31,8 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
-.mvn/timing.properties
+
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
 **/.project
 **/.classpath
 **/*.class
@@ -41,3 +40,8 @@ buildNumber.properties
 **/logs/*
 .vscode
 .metadata/
+.mvn/**
+
+# Other
+**/.DS_Store
+**/.factorypath
