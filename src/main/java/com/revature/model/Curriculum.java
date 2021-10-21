@@ -35,9 +35,9 @@ public class Curriculum {
 	@NotBlank
 	private String curriculumName;
 	
-	private int num_weeks;
+	private int numWeeks;
 	
-	private int num_days;
+	private int numDays;
 	
 	
 	

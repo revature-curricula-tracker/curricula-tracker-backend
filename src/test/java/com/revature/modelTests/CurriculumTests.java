@@ -2,59 +2,57 @@ package com.revature.modelTests;
 
 
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanToString;
+import static com.google.code.beanmatchers.BeanMatchers.hasValidGettersAndSetters;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.Curriculum;
 
 @SpringBootTest(classes=Curriculum.class)
-public class CurriculumTests {
-	private Curriculum c;
-	@BeforeEach
-	public void setup() {
-		c = new Curriculum(1,"Curricutastic",1,1);
-	}
-	
-	@AfterEach
-	public void teardown() {
-		c = null;
-		
-	}
-	@Test
-	void contextLoads() {
-	}
-	@Test
-	public void GetCurriculumIdTest() {
-		
-		assertEquals(1,c.getCurriculumId());
-	}
-	@Test
-	public void  GetCurriculumNameTest() {
-		
-		assertEquals("Curricutastic",c.getCurriculumName());
-	}
-	@Test
-	public void  GetCurriculumNumWeeksTest() {
-			
-			assertEquals(1,c.getNum_weeks());
-		}
-	@Test
-	public void  GetCurriculumNumDaysTest() {
-			
-			assertEquals(1,c.getNum_days());
-	}
-	@Test
-	public void  SetCurriculumNumDaysTest() {
-			c.setNum_days(2);
-			assertEquals(2,c.getNum_days());
-	}
-	@Test
-	public void  SetCurriculumNumWeeksTest() {
-			c.setNum_weeks(2);
-			assertEquals(2,c.getNum_weeks());
-	}
+class CurriculumTests {
+	// One big test
+    @Test
+    void testBean() {
+        assertThat(Curriculum.class, allOf(
+                hasValidBeanConstructor(),
+                hasValidGettersAndSetters(),
+                hasValidBeanHashCode(),
+                hasValidBeanEquals(),
+                hasValidBeanToString()
+        ));
+    }
+
+    // Individual, well named tests
+
+    @Test
+    void shouldHaveANoArgsConstructor() {
+        assertThat(Curriculum.class, hasValidBeanConstructor());
+    }
+
+    @Test
+    void gettersAndSettersShouldWorkForEachProperty() {
+        assertThat(Curriculum.class, hasValidGettersAndSetters());
+    }
+
+    @Test
+    void allPropertiesShouldInfluenceHashCode() {
+        assertThat(Curriculum.class, hasValidBeanHashCode());
+    }
+
+    @Test
+    void allPropertiesShouldBeComparedDuringEquals() {
+        assertThat(Curriculum.class, hasValidBeanEquals());
+    }
+
+    @Test
+    void allPropertiesShouldBeRepresentedInToStringOutput() {
+        assertThat(Curriculum.class, hasValidBeanToString());
+    }
 }

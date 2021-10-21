@@ -45,4 +45,6 @@ public class Topic {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
+	
+	
 }
