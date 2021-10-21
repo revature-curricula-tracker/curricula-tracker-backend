@@ -11,74 +11,49 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.revature.model.Curriculum;
 import com.revature.model.CurriculumTopic;
 import com.revature.model.CurriculumTopicKey;
+import static com.google.code.beanmatchers.BeanMatchers.*;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(classes=CurriculumTopic.class)
 public class CurriculumTopicTests {
 
-	private CurriculumTopic c;
+    // One big test
+    @Test
+    public void testBean() {
+        assertThat(CurriculumTopic.class, allOf(
+                hasValidBeanConstructor(),
+                hasValidGettersAndSetters(),
+                hasValidBeanHashCode(),
+                hasValidBeanEquals(),
+                hasValidBeanToString()
+        ));
+    }
 
-	@BeforeEach
-	public void setup() {
-		c = new CurriculumTopic(new CurriculumTopicKey(3, 4), 14, 4, 12);
-	}
+    // Individual, well named tests
 
-	@AfterEach
-	public void teardown() {
-		c = null;
-	}
+    @Test
+    public void shouldHaveANoArgsConstructor() {
+        assertThat(CurriculumTopic.class, hasValidBeanConstructor());
+    }
 
-	@Test
-	public void testGet_CurriculumTopicKey()
-	{
-		CurriculumTopicKey t = new CurriculumTopicKey(3, 4);
-		assertEquals(c.getCurriculumTopicKey(), t);
-	}
+    @Test
+    public void gettersAndSettersShouldWorkForEachProperty() {
+        assertThat(CurriculumTopic.class, hasValidGettersAndSetters());
+    }
 
-	@Test
-	public void testGet_CurriculumId()
-	{
-		assertEquals(c.getCurriculumId(), 14);
-	}
+    @Test
+    public void allPropertiesShouldInfluenceHashCode() {
+        assertThat(CurriculumTopic.class, hasValidBeanHashCode());
+    }
 
-	@Test
-	public void testGet_TopicId()
-	{
-		assertEquals(c.getTopicId(), 4);
-	}
+    @Test
+    public void allPropertiesShouldBeComparedDuringEquals() {
+        assertThat(CurriculumTopic.class, hasValidBeanEquals());
+    }
 
-	@Test
-	public void testGet_TopicDays()
-	{
-		assertEquals(c.getTopicDay(), 12);
-	}
-
-	@Test
-	public void testSet_CurriculumTopicKey()
-	{
-		CurriculumTopicKey k = new CurriculumTopicKey(12, 12);
-		c.setCurriculumTopicKey(k);
-		assertEquals(true,c.getCurriculumTopicKey() == k);
-	}
-
-	@Test
-	public void testSet_CurriculumId()
-	{
-		c.setCurriculumId(110);
-		assertEquals(c.getCurriculumId(), 110);
-	}
-
-	@Test
-	public void testSet_TopicId()
-	{
-		c.setTopicId(25);
-		assertEquals(c.getTopicId(), 25);
-	}
-
-	@Test
-	public void testSet_TopicDays()
-	{
-		c.setTopicDay(3);
-		assertEquals(c.getTopicDay(), 3);
-	}
-
+    @Test
+    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+        assertThat(CurriculumTopic.class, hasValidBeanToString());
+    }
 }
