@@ -13,60 +13,51 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.Topic;
 import com.revature.model.Curriculum;
-import com.revature.model.Technology;
+import com.revature.model.Topic;
+import static com.google.code.beanmatchers.BeanMatchers.*;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @SpringBootTest(classes=Topic.class)
 public class TopicTests {
 	
-	private Topic topic;
-	private Technology tech;
-	
-	@BeforeEach
-	public void setup() {
-		
-		topic = new Topic(1, "name", tech);
-	}
-	
-	@AfterEach
-	public void teardown() {
-		tech = null;
-	}
-	
-	@Test
-	public void getIdReturnsIdTest() {
-		int dummyId = 1;
-		assertEquals(dummyId, topic.getId());
-	}
-	
-	@Test
-	public void setIdChangesIdTest() {
-		int dummyId = 2;
-		topic.setId(dummyId);
-		assertEquals(dummyId, topic.getId());
-	}
-	
-	@Test
-	public void testGetNameReturnsName() {
-		String dummyName = "name";
-		assertEquals(dummyName, topic.getName());
-	}
-	
-	@Test
-	public void testSetNameChangesName() {
-		String dummyName = "rename";
-		topic.setName(dummyName);
-		assertEquals(dummyName, topic.getName());
-	}
-	
-	@Test
-	public void testGetCurriculumReturnsCurriculum() {
-		Set<Curriculum> dummySet = new HashSet<>();
-		assertEquals(dummySet, topic.getCurriculum());
-	}
-	
-	@Test
-	public void testGetTechnologyReturnsTechnology() {
-		assertEquals(tech, topic.getTechnology());
-	}
+    // One big test
+    @Test
+    public void testBean() {
+        assertThat(Topic.class, allOf(
+                hasValidBeanConstructor(),
+                hasValidGettersAndSetters(),
+                hasValidBeanHashCode(),
+                hasValidBeanEquals(),
+                hasValidBeanToString()
+        ));
+    }
+
+    // Individual, well named tests
+
+    @Test
+    public void shouldHaveANoArgsConstructor() {
+        assertThat(Topic.class, hasValidBeanConstructor());
+    }
+
+    @Test
+    public void gettersAndSettersShouldWorkForEachProperty() {
+        assertThat(Topic.class, hasValidGettersAndSetters());
+    }
+
+    @Test
+    public void allPropertiesShouldInfluenceHashCode() {
+        assertThat(Topic.class, hasValidBeanHashCode());
+    }
+
+    @Test
+    public void allPropertiesShouldBeComparedDuringEquals() {
+        assertThat(Topic.class, hasValidBeanEquals());
+    }
+
+    @Test
+    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+        assertThat(Topic.class, hasValidBeanToString());
+    }
 	
 }

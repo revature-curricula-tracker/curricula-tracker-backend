@@ -11,50 +11,48 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.Curriculum;
 
+import static com.google.code.beanmatchers.BeanMatchers.*;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 @SpringBootTest(classes=Curriculum.class)
 public class CurriculumTests {
-	private Curriculum c;
-	@BeforeEach
-	public void setup() {
-		c = new Curriculum(1,"Curricutastic",1,1);
-	}
-	
-	@AfterEach
-	public void teardown() {
-		c = null;
-		
-	}
-	@Test
-	void contextLoads() {
-	}
-	@Test
-	public void GetCurriculumIdTest() {
-		
-		assertEquals(1,c.getCurriculumId());
-	}
-	@Test
-	public void  GetCurriculumNameTest() {
-		
-		assertEquals("Curricutastic",c.getCurriculumName());
-	}
-	@Test
-	public void  GetCurriculumNumWeeksTest() {
-			
-			assertEquals(1,c.getNum_weeks());
-		}
-	@Test
-	public void  GetCurriculumNumDaysTest() {
-			
-			assertEquals(1,c.getNum_days());
-	}
-	@Test
-	public void  SetCurriculumNumDaysTest() {
-			c.setNum_days(2);
-			assertEquals(2,c.getNum_days());
-	}
-	@Test
-	public void  SetCurriculumNumWeeksTest() {
-			c.setNum_weeks(2);
-			assertEquals(2,c.getNum_weeks());
-	}
+	// One big test
+    @Test
+    public void testBean() {
+        assertThat(Curriculum.class, allOf(
+                hasValidBeanConstructor(),
+                hasValidGettersAndSetters(),
+                hasValidBeanHashCode(),
+                hasValidBeanEquals(),
+                hasValidBeanToString()
+        ));
+    }
+
+    // Individual, well named tests
+
+    @Test
+    public void shouldHaveANoArgsConstructor() {
+        assertThat(Curriculum.class, hasValidBeanConstructor());
+    }
+
+    @Test
+    public void gettersAndSettersShouldWorkForEachProperty() {
+        assertThat(Curriculum.class, hasValidGettersAndSetters());
+    }
+
+    @Test
+    public void allPropertiesShouldInfluenceHashCode() {
+        assertThat(Curriculum.class, hasValidBeanHashCode());
+    }
+
+    @Test
+    public void allPropertiesShouldBeComparedDuringEquals() {
+        assertThat(Curriculum.class, hasValidBeanEquals());
+    }
+
+    @Test
+    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+        assertThat(Curriculum.class, hasValidBeanToString());
+    }
 }
