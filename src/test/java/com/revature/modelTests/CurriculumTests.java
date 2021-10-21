@@ -26,10 +26,7 @@ public class CurriculumTests {
 		c = null;
 		
 	}
-	
-	@Test
-	public void contextLoads() {
-	}
+
 	@Test
 	public void GetCurriculumIdTest() {
 		
