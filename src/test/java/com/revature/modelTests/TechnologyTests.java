@@ -14,11 +14,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.model.Technology;
 
 @SpringBootTest(classes=Technology.class)
-public class TechnologyTests {
+ class TechnologyTests {
 	
     // One big test
     @Test
-    public void testBean() {
+    void testBean() {
         assertThat(Technology.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
@@ -31,27 +31,27 @@ public class TechnologyTests {
     // Individual, well named tests
 
     @Test
-    public void shouldHaveANoArgsConstructor() {
+    void shouldHaveANoArgsConstructor() {
         assertThat(Technology.class, hasValidBeanConstructor());
     }
 
     @Test
-    public void gettersAndSettersShouldWorkForEachProperty() {
+    void gettersAndSettersShouldWorkForEachProperty() {
         assertThat(Technology.class, hasValidGettersAndSetters());
     }
 
     @Test
-    public void allPropertiesShouldInfluenceHashCode() {
+    void allPropertiesShouldInfluenceHashCode() {
         assertThat(Technology.class, hasValidBeanHashCode());
     }
 
     @Test
-    public void allPropertiesShouldBeComparedDuringEquals() {
+    void allPropertiesShouldBeComparedDuringEquals() {
         assertThat(Technology.class, hasValidBeanEquals());
     }
 
     @Test
-    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+    void allPropertiesShouldBeRepresentedInToStringOutput() {
         assertThat(Technology.class, hasValidBeanToString());
     }
 	

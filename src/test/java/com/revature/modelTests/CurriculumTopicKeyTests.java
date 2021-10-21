@@ -13,11 +13,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.CurriculumTopicKey;
 @SpringBootTest(classes=CurriculumTopicKey.class)
-public class CurriculumTopicKeyTests {
+ class CurriculumTopicKeyTests {
 	
 	// One big test
     @Test
-    public void testBean() {
+     void testBean() {
         assertThat(CurriculumTopicKey.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
@@ -30,27 +30,27 @@ public class CurriculumTopicKeyTests {
     // Individual, well named tests
 
     @Test
-    public void shouldHaveANoArgsConstructor() {
+    void shouldHaveANoArgsConstructor() {
         assertThat(CurriculumTopicKey.class, hasValidBeanConstructor());
     }
 
     @Test
-    public void gettersAndSettersShouldWorkForEachProperty() {
+    void gettersAndSettersShouldWorkForEachProperty() {
         assertThat(CurriculumTopicKey.class, hasValidGettersAndSetters());
     }
 
     @Test
-    public void allPropertiesShouldInfluenceHashCode() {
+    void allPropertiesShouldInfluenceHashCode() {
         assertThat(CurriculumTopicKey.class, hasValidBeanHashCode());
     }
 
     @Test
-    public void allPropertiesShouldBeComparedDuringEquals() {
+    void allPropertiesShouldBeComparedDuringEquals() {
         assertThat(CurriculumTopicKey.class, hasValidBeanEquals());
     }
 
     @Test
-    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+    void allPropertiesShouldBeRepresentedInToStringOutput() {
         assertThat(CurriculumTopicKey.class, hasValidBeanToString());
     }
 
