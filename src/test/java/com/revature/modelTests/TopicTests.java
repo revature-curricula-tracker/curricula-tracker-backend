@@ -1,32 +1,32 @@
 package com.revature.modelTests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.Topic;
 import com.revature.model.Curriculum;
 import com.revature.model.Technology;
 
-@SpringBootTest
+@SpringBootTest(classes=Topic.class)
 public class TopicTests {
 	
 	private Topic topic;
 	private Technology tech;
 	
-	@Before
+	@BeforeEach
 	public void setup() {
 		
 		topic = new Topic(1, "name", tech);
 	}
 	
-	@After
+	@AfterEach
 	public void teardown() {
 		tech = null;
 	}
