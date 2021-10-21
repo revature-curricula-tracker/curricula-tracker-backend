@@ -65,7 +65,7 @@ public class TechnologyTests {
 	@Test
 	public void testEquals() {
 		Technology t = new Technology(1, "name", new ArrayList<Topic>());
-		assertTrue(t.equals(tech));
+		assertEquals(true,t.equals(tech));
 	}
 	
 	@Test
