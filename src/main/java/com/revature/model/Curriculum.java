@@ -28,7 +28,7 @@ public class Curriculum {
 	@ManyToMany
 	@JoinTable(name="curriculum_tech_join_table", 
 	joinColumns = @JoinColumn(name = "curriculum_id"),
-	inverseJoinColumns = @JoinColumn(name = "tech_id"))
+	inverseJoinColumns = @JoinColumn(name = "topic_id"))
 	private int curriculumId;
 	
 	@Length(min = 1)
@@ -36,6 +36,8 @@ public class Curriculum {
 	private String curriculumName;
 	
 	private int num_weeks;
+	
+	private int num_days;
 	
 	
 	
