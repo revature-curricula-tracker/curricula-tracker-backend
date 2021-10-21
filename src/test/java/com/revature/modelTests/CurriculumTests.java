@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.model.Curriculum;
 
 @SpringBootTest(classes=Curriculum.class)
-public class CurriculumTests {
+class CurriculumTests {
 	// One big test
     @Test
     void testBean() {
