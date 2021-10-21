@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -45,4 +46,21 @@ public class Topic {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
+
+	public Topic(int id, @Length(min = 1) String name, Technology technology) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.curriculum = new HashSet<Curriculum>();
+		this.technology = technology;
+	}
+	
+	public Topic(@Length(min = 1) String name, Technology technology) {
+		super();
+		this.name = name;
+		this.curriculum = new HashSet<Curriculum>();
+		this.technology = technology;
+	}
+	
+	
 }
