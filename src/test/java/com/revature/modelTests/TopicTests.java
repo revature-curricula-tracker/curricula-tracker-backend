@@ -32,13 +32,13 @@ public class TopicTests {
 	}
 	
 	@Test
-	public void testGetIdReturnsId() {
+	public void getIdReturnsIdTest() {
 		int dummyId = 1;
 		assertEquals(dummyId, topic.getId());
 	}
 	
 	@Test
-	public void testSetIdChangesId() {
+	public void setIdChangesIdTest() {
 		int dummyId = 2;
 		topic.setId(dummyId);
 		assertEquals(dummyId, topic.getId());
