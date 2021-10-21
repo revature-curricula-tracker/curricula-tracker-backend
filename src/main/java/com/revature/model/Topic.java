@@ -5,8 +5,12 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.FetchType;
 
@@ -28,7 +32,8 @@ public class Topic {
 	@Column(nullable = false, unique = true, updatable = false)
 	private int id;
 
-	private int day;
+	@ManyToMany (mappedBy = "curriculum_topic_join_table")
+	Set<Curriculum> curriculum;
 	
 	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
