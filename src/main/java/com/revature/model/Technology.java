@@ -35,10 +35,6 @@ public class Technology {
 	@NotBlank
 	private String techName;
 	
-	private int weekStart;
-	
-	private int techLength;
-	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
 	private List<Topic> topics;
 
