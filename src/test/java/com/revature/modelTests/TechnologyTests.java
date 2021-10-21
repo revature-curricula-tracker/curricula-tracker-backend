@@ -1,6 +1,7 @@
 package com.revature.modelTests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -57,7 +58,21 @@ public class TechnologyTests {
 		assertEquals(dummyTopics, tech.getTopics());
 	}
 	
-	//TODO : add a setTopics test
+	//TODO : add a setTopics test. Waiting on topic model.
+	
+	@Test
+	public void testEquals() {
+		Technology t = new Technology(1, "name", new ArrayList<Topic>());
+		assertTrue(t.equals(tech));
+	}
+	
+	@Test
+	public void testHashCode() {
+		Technology t = new Technology(1, "name", new ArrayList<Topic>());
+		assertEquals(t.hashCode(), tech.hashCode());
+	}
+	
+	
 	
 
 }
