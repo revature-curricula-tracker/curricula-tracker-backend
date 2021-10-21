@@ -1,25 +1,28 @@
 package com.revature.modelTests;
 
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
+import com.revature.model.Curriculum;
 import com.revature.model.CurriculumTopic;
 import com.revature.model.CurriculumTopicKey;
 
+@SpringBootTest(classes=CurriculumTopic.class)
 public class CurriculumTopicTests {
 
 	private CurriculumTopic c;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		c = new CurriculumTopic(new CurriculumTopicKey(3, 4), 14, 4, 12);
 	}
 
-	@After
+	@AfterEach
 	public void teardown() {
 		c = null;
 	}
@@ -54,7 +57,7 @@ public class CurriculumTopicTests {
 	{
 		CurriculumTopicKey k = new CurriculumTopicKey(12, 12);
 		c.setCurriculumTopicKey(k);
-		assertTrue(c.getCurriculumTopicKey() == k);
+		assertEquals(true,c.getCurriculumTopicKey() == k);
 	}
 
 	@Test

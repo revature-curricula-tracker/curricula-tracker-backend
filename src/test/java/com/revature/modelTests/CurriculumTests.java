@@ -1,32 +1,32 @@
 package com.revature.modelTests;
 
+
+
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.revature.model.Curriculum;
-import com.revature.model.Technology;
-import com.revature.model.Topic;
 
-@SpringBootTest
+@SpringBootTest(classes=Curriculum.class)
 public class CurriculumTests {
 	private Curriculum c;
-	@Before
+	@BeforeEach
 	public void setup() {
 		c = new Curriculum(1,"Curricutastic",1,1);
 	}
 	
-	@After
+	@AfterEach
 	public void teardown() {
 		c = null;
 		
 	}
-
+	@Test
+	void contextLoads() {
+	}
 	@Test
 	public void GetCurriculumIdTest() {
 		
@@ -46,5 +46,15 @@ public class CurriculumTests {
 	public void  GetCurriculumNumDaysTest() {
 			
 			assertEquals(1,c.getNum_days());
+	}
+	@Test
+	public void  SetCurriculumNumDaysTest() {
+			c.setNum_days(2);
+			assertEquals(2,c.getNum_days());
+	}
+	@Test
+	public void  SetCurriculumNumWeeksTest() {
+			c.setNum_weeks(2);
+			assertEquals(2,c.getNum_weeks());
 	}
 }
