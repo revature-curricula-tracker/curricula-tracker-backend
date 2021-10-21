@@ -3,7 +3,6 @@ package com.revature.modelTests;
 import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,18 +14,15 @@ import com.revature.model.Topic;
 public class TechnologyTests {
 	
 	private Technology tech;
-	private Technology blankTech;
 	
 	@Before
 	public void setup() {
 		tech = new Technology(1, "name", new ArrayList<Topic>());
-		blankTech = new Technology();
 	}
 	
 	@After
 	public void teardown() {
 		tech = null;
-		blankTech = null;
 	}
 	
 	@Test
@@ -49,18 +45,19 @@ public class TechnologyTests {
 	}
 	
 	@Test
+	public void testSetNameChangesName() {
+		String dummyName = "rename";
+		tech.setTechName(dummyName);
+		assertEquals(dummyName, tech.getTechName());
+	}
+	
+	@Test
 	public void testGetTopicsReturnsTopics() {
 		List<Topic> dummyTopics = new ArrayList<Topic>();
-		assertEquals(dummyTopics, tech.getTechName());
+		assertEquals(dummyTopics, tech.getTopics());
 	}
 	
-	// in progress
-	// TODO add custom error
-	@Test
-	public void testBlankNameThrowsError() {
-		assertEquals(null, blankTech.getTechName());
-	}
-	
+	//TODO : add a setTopics test
 	
 
 }
