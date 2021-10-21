@@ -16,6 +16,8 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class CurriculumTopicKey implements Serializable {
 	
+	private static final long serialVersionUID = -8885803230398305320L;
+
 	@Column(name="curriculum_id")
 	private int curriculumId;
 	
