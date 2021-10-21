@@ -19,7 +19,7 @@ import com.revature.model.Curriculum;
 public class CurriculumTests {
 	// One big test
     @Test
-    public void testBean() {
+    void testBean() {
         assertThat(Curriculum.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
@@ -32,27 +32,27 @@ public class CurriculumTests {
     // Individual, well named tests
 
     @Test
-    public void shouldHaveANoArgsConstructor() {
+    void shouldHaveANoArgsConstructor() {
         assertThat(Curriculum.class, hasValidBeanConstructor());
     }
 
     @Test
-    public void gettersAndSettersShouldWorkForEachProperty() {
+    void gettersAndSettersShouldWorkForEachProperty() {
         assertThat(Curriculum.class, hasValidGettersAndSetters());
     }
 
     @Test
-    public void allPropertiesShouldInfluenceHashCode() {
+    void allPropertiesShouldInfluenceHashCode() {
         assertThat(Curriculum.class, hasValidBeanHashCode());
     }
 
     @Test
-    public void allPropertiesShouldBeComparedDuringEquals() {
+    void allPropertiesShouldBeComparedDuringEquals() {
         assertThat(Curriculum.class, hasValidBeanEquals());
     }
 
     @Test
-    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+    void allPropertiesShouldBeRepresentedInToStringOutput() {
         assertThat(Curriculum.class, hasValidBeanToString());
     }
 }

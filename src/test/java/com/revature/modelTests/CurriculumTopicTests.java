@@ -15,11 +15,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.model.CurriculumTopic;
 
 @SpringBootTest(classes=CurriculumTopic.class)
-public class CurriculumTopicTests {
+ class CurriculumTopicTests {
 
     // One big test
     @Test
-    public void testBean() {
+    void testBean() {
         assertThat(CurriculumTopic.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
@@ -32,27 +32,27 @@ public class CurriculumTopicTests {
     // Individual, well named tests
 
     @Test
-    public void shouldHaveANoArgsConstructor() {
+    void shouldHaveANoArgsConstructor() {
         assertThat(CurriculumTopic.class, hasValidBeanConstructor());
     }
 
     @Test
-    public void gettersAndSettersShouldWorkForEachProperty() {
+    void gettersAndSettersShouldWorkForEachProperty() {
         assertThat(CurriculumTopic.class, hasValidGettersAndSetters());
     }
 
     @Test
-    public void allPropertiesShouldInfluenceHashCode() {
+    void allPropertiesShouldInfluenceHashCode() {
         assertThat(CurriculumTopic.class, hasValidBeanHashCode());
     }
 
     @Test
-    public void allPropertiesShouldBeComparedDuringEquals() {
+    void allPropertiesShouldBeComparedDuringEquals() {
         assertThat(CurriculumTopic.class, hasValidBeanEquals());
     }
 
     @Test
-    public void allPropertiesShouldBeRepresentedInToStringOutput() {
+    void allPropertiesShouldBeRepresentedInToStringOutput() {
         assertThat(CurriculumTopic.class, hasValidBeanToString());
     }
 }
