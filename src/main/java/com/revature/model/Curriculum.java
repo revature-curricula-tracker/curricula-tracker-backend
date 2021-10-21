@@ -10,7 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
-<<<<<<< HEAD
 import org.hibernate.validator.constraints.Length;
 
 import lombok.AllArgsConstructor;
@@ -21,10 +20,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-=======
-
-@Entity
->>>>>>> d833b37a4acbe118a6d41b40440b70fdf16a0f23
 public class Curriculum {
 	
 	@Id

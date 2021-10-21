@@ -1,11 +1,16 @@
 package com.revature.modelTests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.revature.model.Curriculum;
 import com.revature.model.CurriculumTopicKey;
 
+@SpringBootTest(classes=CurriculumTopicKey.class)
 public class CurriculumTopicKeyTests {
 	
 	private CurriculumTopicKey k;
@@ -19,7 +24,9 @@ public class CurriculumTopicKeyTests {
 	public void teardown() {
 		k = null;
 	}
-	
+	@Test
+	void contextLoads() {
+	}
 	@Test
 	public void testGetCurriculumId()
 	{
