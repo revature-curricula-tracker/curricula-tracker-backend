@@ -21,25 +21,6 @@ public class CurriculumTopicKey implements Serializable {
 	
 	@Column(name="topic_id")
 	private int topicId;
-
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(curriculumId, topicId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CurriculumTopicKey other = (CurriculumTopicKey) obj;
-		return curriculumId == other.curriculumId && topicId == other.topicId;
-	}
-	
 	
 
 }

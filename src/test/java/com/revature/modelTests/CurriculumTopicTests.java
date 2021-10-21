@@ -43,13 +43,13 @@ public class CurriculumTopicTests {
 	@Test
 	public void testGet_TopicId()
 	{
-		assertEquals(c.getTopic_id(), 4);
+		assertEquals(c.getTopicId(), 4);
 	}
 
 	@Test
 	public void testGet_TopicDays()
 	{
-		assertEquals(c.getTopic_day(), 12);
+		assertEquals(c.getTopicDay(), 12);
 	}
 
 	@Test
@@ -70,15 +70,15 @@ public class CurriculumTopicTests {
 	@Test
 	public void testSet_TopicId()
 	{
-		c.setTopic_id(25);
-		assertEquals(c.getTopic_id(), 25);
+		c.setTopicId(25);
+		assertEquals(c.getTopicId(), 25);
 	}
 
 	@Test
 	public void testSet_TopicDays()
 	{
-		c.setTopic_day(3);
-		assertEquals(c.getTopic_day(), 3);
+		c.setTopicDay(3);
+		assertEquals(c.getTopicDay(), 3);
 	}
 
 }
