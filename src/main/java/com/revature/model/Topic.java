@@ -2,6 +2,9 @@ package com.revature.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +34,9 @@ public class Topic {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, unique = true, updatable = false)
 	private int id;
+	
+	@Length(min=1)
+	private String name;
 
 	@ManyToMany (mappedBy = "curriculum_topic_join_table")
 	Set<Curriculum> curriculum;
