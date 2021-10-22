@@ -28,9 +28,9 @@ public class CurriculumTopic {
 	    @ManyToOne
 	    @MapsId("topic_id")
 	    @JoinColumn(name = "topic_id")
-	    private int topic_id;
+	    private int topicId;
 
-	    private int topic_day;
+	    private int topicDay;
 	    
 	    // standard constructors, getters, and setters
 	}
