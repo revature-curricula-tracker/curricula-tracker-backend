@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,37 +17,30 @@ import com.revature.exceptions.TechnologyNotFoundException;
 
 @Service
 public class TechnologyService {
-	@Autowired private TechnologyDao tDao;
+	@Autowired
+	private TechnologyDao tDao;
 	private Logger log = LoggerFactory.getLogger(this.getClass());
+
 	@Transactional(readOnly = true)
-	public Set<Technology> findAll()
-	{
+	public Set<Technology> findAll() {
 		return tDao.findAll().stream().collect(Collectors.toSet());
 	}
+
 	@Transactional(readOnly = true)
-	public Technology findById(int id)
-	{
-		return tDao.findById(id).orElseThrow(() -> new TechnologyNotFoundException("No technology found with id " + id));
-	}
-	@Transactional(readOnly = true)
-	public Technology getById(int id)
-	{
+	public Optional<Technology> getById(int id) {
 		return tDao.getById(id);
 	}
+
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public Technology insertTechnology(Technology t)
-	{
+	public Technology insertTechnology(Technology t) {
 		return tDao.save(t);
 	}
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void deleteTechnology(int id)
-	{
-		try
-		{
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void deleteTechnology(int id) {
+		try {
 			tDao.deleteById(id);
-		}
-		catch(IllegalArgumentException e)
-		{
+		} catch (IllegalArgumentException e) {
 			log.warn("ID can't be pulled.");
 		}
 	}
