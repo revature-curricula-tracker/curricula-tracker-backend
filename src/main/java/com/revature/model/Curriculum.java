@@ -41,6 +41,12 @@ public class Curriculum {
 	private int numWeeks;
 	
 	private int numDays;
+
+	@Override
+	public String toString() {
+		return "Curriculum [curriculumId=" + curriculumId + ", curriculumTopics=" + curriculumTopics
+				+ ", curriculumName=" + curriculumName + ", numWeeks=" + numWeeks + ", numDays=" + numDays + "]";
+	}
 	
 	
 	
