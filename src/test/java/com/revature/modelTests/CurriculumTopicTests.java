@@ -1,7 +1,6 @@
 package com.revature.modelTests;
 
 
-
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
@@ -13,14 +12,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.revature.model.Curriculum;
+import com.revature.model.CurriculumTopic;
 
-@SpringBootTest(classes=Curriculum.class)
-class CurriculumTests {
-	// One big test
+@SpringBootTest(classes=CurriculumTopic.class)
+ class CurriculumTopicTests {
+
+    // One big test
     @Test
     void testBean() {
-        assertThat(Curriculum.class, allOf(
+        assertThat(CurriculumTopic.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
                 hasValidBeanHashCode(),
@@ -33,26 +33,26 @@ class CurriculumTests {
 
     @Test
     void shouldHaveANoArgsConstructor() {
-        assertThat(Curriculum.class, hasValidBeanConstructor());
+        assertThat(CurriculumTopic.class, hasValidBeanConstructor());
     }
 
     @Test
     void gettersAndSettersShouldWorkForEachProperty() {
-        assertThat(Curriculum.class, hasValidGettersAndSetters());
+        assertThat(CurriculumTopic.class, hasValidGettersAndSetters());
     }
 
     @Test
     void allPropertiesShouldInfluenceHashCode() {
-        assertThat(Curriculum.class, hasValidBeanHashCode());
+        assertThat(CurriculumTopic.class, hasValidBeanHashCode());
     }
 
     @Test
     void allPropertiesShouldBeComparedDuringEquals() {
-        assertThat(Curriculum.class, hasValidBeanEquals());
+        assertThat(CurriculumTopic.class, hasValidBeanEquals());
     }
 
     @Test
     void allPropertiesShouldBeRepresentedInToStringOutput() {
-        assertThat(Curriculum.class, hasValidBeanToString());
+        assertThat(CurriculumTopic.class, hasValidBeanToString());
     }
 }
