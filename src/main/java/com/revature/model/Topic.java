@@ -38,6 +38,9 @@ public class Topic {
 	
 	@Length(min=1)
 	private String name;
+	
+	@Length(min=1, max=1000)
+	private String description;
 
 	@OneToMany(mappedBy= "topic")
 	Set<CurriculumTopic> curriculumTopics;
@@ -46,6 +49,4 @@ public class Topic {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
-	
-	
 }
