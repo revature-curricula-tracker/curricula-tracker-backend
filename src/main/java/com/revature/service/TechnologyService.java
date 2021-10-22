@@ -2,7 +2,6 @@ package com.revature.service;
 
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +21,19 @@ public class TechnologyService {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Transactional(readOnly = true)
-	public Set<Technology> findAll() {
-		return tDao.findAll().stream().collect(Collectors.toSet());
+	public Optional<Set<Technology>> findAll() {
+		return tDao.getAll();
 	}
 
 	@Transactional(readOnly = true)
 	public Optional<Technology> getById(int id) {
 		return tDao.getById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public Optional<Technology> getByName(String name)
+	{
+		return tDao.getByName(name);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -42,6 +47,19 @@ public class TechnologyService {
 			tDao.deleteById(id);
 		} catch (IllegalArgumentException e) {
 			log.warn("ID can't be pulled.");
+		}
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void update(Technology tech)
+	{
+		try
+		{
+			tDao.save(tech);
+		}
+		catch(TechnologyNotFoundException e)
+		{
+			log.warn("Technology can't be found, update failed.");
 		}
 	}
 }
