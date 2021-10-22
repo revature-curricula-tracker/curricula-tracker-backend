@@ -1,5 +1,7 @@
 package com.revature.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -25,11 +28,11 @@ public class Curriculum {
 	@Id
 	@Column(name="curriculum_id", nullable = false, unique=true, updatable=false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@ManyToMany
-	@JoinTable(name="curriculum_tech_join_table", 
-	joinColumns = @JoinColumn(name = "curriculum_id"),
-	inverseJoinColumns = @JoinColumn(name = "topic_id"))
 	private int curriculumId;
+	
+	@OneToMany(mappedBy= "curriculum")
+	Set<CurriculumTopic> curriculumTopics;
+	
 	
 	@Length(min = 1)
 	@NotBlank
@@ -38,6 +41,12 @@ public class Curriculum {
 	private int numWeeks;
 	
 	private int numDays;
+
+	@Override
+	public String toString() {
+		return "Curriculum [curriculumId=" + curriculumId + ", curriculumTopics=" + curriculumTopics
+				+ ", curriculumName=" + curriculumName + ", numWeeks=" + numWeeks + ", numDays=" + numDays + "]";
+	}
 	
 	
 	

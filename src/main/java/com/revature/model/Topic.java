@@ -15,6 +15,7 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -41,8 +42,8 @@ public class Topic {
 	@Length(min=1, max=1000)
 	private String description;
 
-	@ManyToMany (mappedBy = "curriculum_topic_join_table")
-	Set<Curriculum> curriculum;
+	@OneToMany(mappedBy= "topic")
+	Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
