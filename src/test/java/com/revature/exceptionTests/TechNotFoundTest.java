@@ -14,10 +14,10 @@ public class TechNotFoundTest {
 	@Test
 	public void whenExceptionThrown_thenAssertionSucceeds() {
 	    Exception exception = assertThrows(TechnologyNotFoundException.class, () -> {
-	        Integer.parseInt("1a");
+	        throw new TechnologyNotFoundException("Tech not found");
 	    });
 
-	    String expectedMessage = "For input string";
+	    String expectedMessage = "Tech not found";
 	    String actualMessage = exception.getMessage();
 
 	    assertTrue(actualMessage.contains(expectedMessage));
