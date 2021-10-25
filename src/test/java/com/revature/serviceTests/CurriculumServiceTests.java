@@ -17,8 +17,9 @@ import com.revature.model.Curriculum;
 import com.revature.repository.CurriculumDao;
 import com.revature.service.CurriculumService;
 
-@SpringBootTest(classes = { CurriculumService.class, CurriculumDao.class })
-public class curriculumServiceTests {
+
+@SpringBootTest(classes= {CurriculumService.class,CurriculumDao.class})
+class CurriculumServiceTests {
 
 	@MockBean
 	CurriculumDao cDao;
@@ -62,6 +63,7 @@ public class curriculumServiceTests {
 	@Test
 	void deleteCurriculum_success() {
 		this.cs.removeById(this.curriculum.getCurriculumId());
+		assertEquals(2, this.curriculum.getCurriculumId());
 	}
 
 	@Test
@@ -71,7 +73,7 @@ public class curriculumServiceTests {
 	}
 
 	@Test
-	public void testUpdateReturnsCurriculum() {
+	void testUpdateReturnsCurriculum() {
 		when(cDao.save(curr2.get())).thenReturn(curr2.get());
 		when(cDao.findById(1)).thenReturn(curr2);
 
