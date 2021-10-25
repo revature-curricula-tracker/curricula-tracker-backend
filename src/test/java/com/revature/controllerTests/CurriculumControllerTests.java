@@ -27,7 +27,7 @@ import com.revature.service.CurriculumService;
 
 
 @WebMvcTest(CurriculumController.class)
-public class CurriculumControllerTests {
+class CurriculumControllerTests {
 	
 	static ObjectMapper objectMapper;
 	
@@ -53,7 +53,7 @@ public class CurriculumControllerTests {
 	}
 
 	@Test
-	public void getcurriculumById_returnscurriculum() throws Exception {
+	void getcurriculumById_returnscurriculum() throws Exception {
 		final int id = this.curriculum.getCurriculumId();
 		when(this.service.getById( id )).thenReturn(this.curriculum);
 		
@@ -62,7 +62,7 @@ public class CurriculumControllerTests {
 			.andExpect( content().json(this.curriculumJson) );
 	}
 	@Test
-	public void getcurriculumByName_returnscurriculum() throws Exception {
+	void getcurriculumByName_returnscurriculum() throws Exception {
 		final String name = this.curriculum.getCurriculumName();
 		when(this.service.getByCurriculumName( name )).thenReturn(this.curriculum);
 		
@@ -71,7 +71,7 @@ public class CurriculumControllerTests {
 			.andExpect( content().json(this.curriculumJson) );
 	}
 	@Test
-	public void TestFindAllCurriculum() throws Exception {
+	void TestFindAllCurriculum() throws Exception {
 		List<Curriculum> curricula = new ArrayList<>();
 		curricula.add(curriculum);
 		when(this.service.findAll()).thenReturn(curricula);
@@ -80,7 +80,7 @@ public class CurriculumControllerTests {
 			.andExpect( status().isOk() );
 	}
 	@Test
-	public void removecurriculumById_returnsnothing() throws Exception {
+	void removecurriculumById_returnsnothing() throws Exception {
 		final int id = 1;
 		
 		this.mvc.perform(delete( PATH +"/deleteById/"+ id ))
@@ -88,7 +88,7 @@ public class CurriculumControllerTests {
 	}
 
 	@Test
-	public void addcurriculum_returnscurriculum() throws Exception {
+	void addcurriculum_returnscurriculum() throws Exception {
 		when(this.service.insert(this.curriculum)).thenReturn(this.curriculum);
 		
 		this.mvc.perform(post( PATH + "add" ).content(this.curriculumJson).contentType(MediaType.APPLICATION_JSON) )
@@ -97,7 +97,7 @@ public class CurriculumControllerTests {
 	}
 
 	@Test
-	public void updatecurriculum_returnscurriculum() throws Exception {
+	void updatecurriculum_returnscurriculum() throws Exception {
 		when(this.service.update(this.curriculum)).thenReturn(this.curriculum);
 		
 		this.mvc.perform(post( PATH + "update").content(this.curriculumJson).contentType(MediaType.APPLICATION_JSON))

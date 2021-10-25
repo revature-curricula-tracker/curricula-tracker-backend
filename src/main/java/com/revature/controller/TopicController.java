@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Topic;
@@ -32,27 +31,27 @@ public class TopicController {
 	}
 	
 	@GetMapping("/{id}") 
-	public ResponseEntity<Topic> getTopicById(@PathVariable("id") int id) {
+	public ResponseEntity<Topic> getTopicById(@PathVariable("id") final int id) {
 		return ResponseEntity.ok(topicService.findById(id));
 	}
 	
-	@GetMapping("/search") 
-	public ResponseEntity<List<Topic>> getTopicByName(@RequestParam("name") String name) {
+	@GetMapping("/search/{name}") 
+	public ResponseEntity<List<Topic>> getTopicByName(@PathVariable("name") final String name) {
 		return ResponseEntity.ok(topicService.findByName(name));
 	}
 	
 	@PostMapping("/add")			
-	public ResponseEntity<Topic> addTopic(@Valid @RequestBody Topic t) {
+	public ResponseEntity<Topic> addTopic(@Valid @RequestBody final Topic t) {
 		return ResponseEntity.ok(topicService.save(t));
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Topic> updateTopic(@Valid @RequestBody Topic t) {
+	public ResponseEntity<Topic> updateTopic(@Valid @RequestBody final Topic t) {
 		return ResponseEntity.ok(topicService.update(t));
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable int id) {
+	public void delete(@PathVariable final int id) {
 		topicService.delete(id);
     }
 	
