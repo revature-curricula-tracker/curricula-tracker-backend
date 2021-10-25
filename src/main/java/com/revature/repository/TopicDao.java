@@ -10,8 +10,6 @@ import com.revature.model.Topic;
 @Repository
 public interface TopicDao extends JpaRepository<Topic, Integer> {
 	
-	List<TopicDao> findByDate(int day);
-	List<TopicDao> findByName(String name);
-	List<TopicDao> findByTechnology(int id);
+	List<Topic> findByName(String name);
 
 }
