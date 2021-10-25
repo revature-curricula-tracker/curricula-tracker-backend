@@ -51,8 +51,7 @@ public class TechnologyController {
 	}
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<Void> delete(@PathVariable int id){
-		techServ.deleteTechnology(id);
-		return ResponseEntity.noContent().build();
+	public ResponseEntity<Boolean> delete(@PathVariable int id){
+		return ResponseEntity.ok(techServ.deleteTechnology(id));
 	}
 }
