@@ -43,28 +43,36 @@ public class TechnologyService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void deleteTechnology(int id) {
+	public boolean deleteTechnology(int id) {
 		try {
 			if (id < 0) {
 				throw new IllegalArgumentException("TechId cannot be less than 0");
 			}
 			tDao.deleteById(id);
-			System.out.println("catch hit");
+			return true;
 		} catch (IllegalArgumentException e) {
 			log.warn("ID can't be pulled.");
+			return false;
 		}
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Technology update(Technology tech)
-	{
-		try
-		{
-		return tDao.save(tech);
+	public Technology update(Technology tech) {
+
+		try {
+		
+			Optional<Technology> foundTech = tDao.findById(tech.getTechId());
+			if (foundTech.isPresent()) {
+				return tDao.save(tech);
+			} else {
+				throw new IllegalArgumentException();
+			}
 		}
+
 		catch(IllegalArgumentException e)
 
 		{
+
 			log.warn("Technology can't be found, update failed.");
 			return null;
 		}
