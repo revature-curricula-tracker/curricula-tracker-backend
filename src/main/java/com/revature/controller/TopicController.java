@@ -32,7 +32,7 @@ public class TopicController {
 	}
 	
 	@GetMapping("/{id}") 
-	public ResponseEntity<Optional<Topic>> getTopicById(@PathVariable("id") int id) {
+	public ResponseEntity<Topic> getTopicById(@PathVariable("id") int id) {
 		return ResponseEntity.ok(topicService.findById(id));
 	}
 	
