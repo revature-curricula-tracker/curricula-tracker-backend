@@ -1,7 +1,6 @@
 package com.revature.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,10 +42,15 @@ public class TopicController {
 	}
 	
 	@PostMapping("/add")			
-	public ResponseEntity<Topic> addUser(@Valid @RequestBody Topic t) {
+	public ResponseEntity<Topic> addTopic(@Valid @RequestBody Topic t) {
 		return ResponseEntity.ok(topicService.save(t));
 	}
 	
+	@PutMapping("/{id}")
+	public ResponseEntity<Topic> updateTopic(@Valid @RequestBody Topic t) {
+		return ResponseEntity.ok(topicService.update(t));
+	}
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
 		topicService.delete(id);
