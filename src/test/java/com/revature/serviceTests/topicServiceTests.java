@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ class TopicServiceTests {
 	@Test
 	void findById_returnsTopic() {
 		final int id = this.topic.getId();
-		when(this.topicDao.getById(id)).thenReturn(this.topic);
+		when(this.topicDao.findById(id)).thenReturn(Optional.of(this.topic));
 		assertEquals("findById did not return the topic", this.service.findById(id), this.topic);
 	}
 	
