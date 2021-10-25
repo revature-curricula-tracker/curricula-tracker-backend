@@ -31,8 +31,7 @@ public class TechnologyService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Optional<Technology> getByName(String name)
-	{
+	public Optional<Technology> getByName(String name) {
 		return Optional.of(tDao.getByTechName(name).get());
 	}
 
