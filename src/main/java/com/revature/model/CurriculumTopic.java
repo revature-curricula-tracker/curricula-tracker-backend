@@ -23,14 +23,14 @@ public class CurriculumTopic {
 	    @ManyToOne
 	    @MapsId("curriculum_id")
 	    @JoinColumn(name = "curriculum_id")
-	    private int curriculumId;
+	   	Curriculum curriculum;
 
 	    @ManyToOne
 	    @MapsId("topic_id")
 	    @JoinColumn(name = "topic_id")
-	    private int topic_id;
+	    Topic topic;
 
-	    private int topic_day;
+	    private int topicDay;
 	    
 	    // standard constructors, getters, and setters
 	}
