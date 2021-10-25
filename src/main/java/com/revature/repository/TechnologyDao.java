@@ -8,11 +8,11 @@ import com.revature.model.Technology;
 
 @Repository
 public interface TechnologyDao extends JpaRepository<Technology, Integer>{
-
-	public Optional<Technology> getById(int id);
-	
-	public Optional<Technology> getByName(String name);
-	
-	public Optional<Set<Technology>> getAll();
+//
+//	public Optional<Technology> getById(int id);
+//	
+//	public Optional<Technology> getByName(String name);
+//	
+//	public Optional<Set<Technology>> getAll();
 	
 }
