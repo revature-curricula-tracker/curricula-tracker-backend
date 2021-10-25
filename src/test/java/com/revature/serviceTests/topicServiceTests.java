@@ -1,11 +1,11 @@
 package com.revature.serviceTests;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -39,7 +39,7 @@ public class TopicServiceTests {
 	void findById_returnsTopic() {
 		final int id = this.topic.getId();
 		when(this.topicDao.getById(id)).thenReturn(this.topic);
-		Assert.assertTrue(this.service.findById(id).equals(this.topic));
+		assertEquals("findById did not return the topic", this.service.findById(id), this.topic);
 	}
 	
 	@Test
@@ -48,13 +48,13 @@ public class TopicServiceTests {
 		list.add(this.topic);
 		
 		when(this.topicDao.findByName(this.topic.getName()) ).thenReturn(list);
-		Assert.assertTrue(this.service.findByName(this.topic.getName()) == list);
+		assertEquals("findByName did not return the list of topics with the provided name", this.service.findByName(this.topic.getName()), list);
 	}
 	
 	@Test
 	void save_returnsTopic() {
 		when(this.topicDao.save(this.topic) ).thenAnswer(i -> i.getArgument(0));
-		Assert.assertTrue(this.service.save(this.topic).equals(this.topic));
+		assertEquals("save did not return the topic",this.service.save(this.topic),this.topic);
 	}
 	
 	@Test
