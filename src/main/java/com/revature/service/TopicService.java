@@ -23,8 +23,9 @@ public class TopicService {
 	}
 	
 	@Transactional(readOnly=true)
-	public Optional<Topic> findById(final int id) {
-		return this.topicDao.findById(id);
+	public Topic findById(final int id) {
+		final Optional<Topic> topic = this.topicDao.findById(id);
+		return topic.isPresent() ? topic.get() : null;
 	}
 
 	@Transactional(readOnly=true)
@@ -34,6 +35,11 @@ public class TopicService {
 
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public Topic save(final Topic topic) {
+		return this.topicDao.save(topic);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public Topic update(final Topic topic) {
 		return this.topicDao.save(topic);
 	}
 	
