@@ -23,30 +23,4 @@ import com.revature.service.CurriculumTopicService;
 @RequestMapping("/curriculumTopic")
 @CrossOrigin(origins = "*")
 public class CurriculumTopicController {
-	
-	@Autowired
-	private CurriculumTopicService curriculumTopicService;
-	
-	@GetMapping("/findAll")
-	public ResponseEntity<Set<CurriculumTopic>> findAll() {
-		return ResponseEntity.ok(curriculumTopicService.findAll());
-	}
-	
-	@GetMapping("/curriculumId/{curriculumId}")
-	public ResponseEntity<Optional<Set<CurriculumTopic>>> getAllByCurriculumId(Curriculum curriculum) {
-		return ResponseEntity.ok(curriculumTopicService.getAllByCurriculum(curriculum));
-	}
-	
-	@GetMapping("/topicId/{topicId}")
-	public ResponseEntity<Optional<Set<CurriculumTopic>>> getAllByTopicId(Topic topic) {
-		return ResponseEntity.ok(curriculumTopicService.getAllByTopic(topic));
-	}
-	
-	@PostMapping("/add")
-	public ResponseEntity<CurriculumTopic> insert(@Valid @RequestBody CurriculumTopic ct) {
-
-		return ResponseEntity.ok(curriculumTopicService.insertCurriculumTopic(ct));
-	} 
-	
-
 }

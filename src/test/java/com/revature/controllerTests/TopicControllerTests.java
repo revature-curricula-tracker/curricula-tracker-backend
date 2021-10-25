@@ -26,8 +26,8 @@ import com.revature.controller.TopicController;
 import com.revature.model.Topic;
 import com.revature.service.TopicService;
 
-@WebMvcTest(TopicController.class)
-public class TopicControllerTests {
+@WebMvcTest(TopicController.class) 
+class TopicControllerTests {
 	
 	static ObjectMapper objectMapper;
 	
@@ -60,7 +60,7 @@ public class TopicControllerTests {
 	}
 
 	@Test
-	public void findAll_returnsList() throws Exception {
+	private void findAll_returnsList() throws Exception {
 		when(this.service.findAll()).thenReturn(this.topicList);
 		
 		this.mvc.perform(get( PATH ))
@@ -69,7 +69,7 @@ public class TopicControllerTests {
 	}
 
 	@Test
-	public void getTopicById_returnsTopic() throws Exception {
+	private void getTopicById_returnsTopic() throws Exception {
 		when(this.service.findById( this.topic.getId() )).thenReturn(this.topic);
 		
 		this.mvc.perform(get( PATH + this.topic.getId() ))
@@ -78,7 +78,7 @@ public class TopicControllerTests {
 	}
 
 	@Test
-	public void getTopicByName_returnsTopic() throws Exception {
+	private void getTopicByName_returnsTopic() throws Exception {
 		when(this.service.findByName( this.topic.getName() )).thenReturn(this.topicList);
 		
 		this.mvc.perform(get( PATH + "search/" + this.topic.getName()))
@@ -87,7 +87,7 @@ public class TopicControllerTests {
 	}
 
 	@Test
-	public void addTopic_returnsTopic() throws Exception {
+	private void addTopic_returnsTopic() throws Exception {
 		when(this.service.save(this.topic)).thenReturn(this.topic);
 		
 		this.mvc.perform(post( PATH + "add" ).content(this.topicJson).contentType(MediaType.APPLICATION_JSON) )
@@ -96,16 +96,18 @@ public class TopicControllerTests {
 	}
 
 	@Test
-	public void updateTopic_returnsTopic() throws Exception {
+	private void updateTopic_returnsTopic() throws Exception {
 		when(this.service.update(this.topic)).thenReturn(this.topic);
 		
 		this.mvc.perform(put( PATH + this.topic.getId()).content(this.topicJson).contentType(MediaType.APPLICATION_JSON))
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}
+	
+
 
 	@Test
-	public void deleteTopic_success() throws Exception {
+	private void deleteTopic_success() throws Exception {
 		this.mvc.perform(delete( PATH + this.topic.getId() ))
 			.andExpect( status().isOk() );
 	}
