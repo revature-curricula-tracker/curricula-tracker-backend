@@ -1,8 +1,44 @@
 package com.revature.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.revature.model.Topic;
+import com.revature.repository.TopicDao;
 
 @Service
 public class TopicService {
 
+	@Autowired
+	private TopicDao topicDao;
+	
+	@Transactional(readOnly=true)
+	public Topic findById(final int id) {
+		return this.topicDao.getById(id);
+	}
+
+	@Transactional(readOnly=true)
+	public List<Topic> findByName(final String name) {
+		return this.topicDao.findByName(name);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void save(final Topic topic) {
+		this.topicDao.save(topic);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void delete(final Topic topic) {
+		this.topicDao.delete(topic);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void delete(final int id) {
+		this.topicDao.deleteById(id);
+	}
+	
 }
