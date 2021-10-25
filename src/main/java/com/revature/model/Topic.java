@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.FetchType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public class Topic {
 	private String description;
 
 	@OneToMany(mappedBy= "topic")
+	@JsonIgnore//Properties(value="topic", allowSetters=true)
 	Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()

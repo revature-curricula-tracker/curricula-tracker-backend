@@ -13,6 +13,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,7 @@ public class Curriculum {
 	private int curriculumId;
 	
 	@OneToMany(mappedBy= "curriculum")
+	@JsonIgnoreProperties(value="curriculum", allowSetters=true)
 	Set<CurriculumTopic> curriculumTopics;
 	
 	
