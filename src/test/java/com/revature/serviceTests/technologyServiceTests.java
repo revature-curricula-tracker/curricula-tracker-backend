@@ -68,34 +68,34 @@ class technologyServiceTests {
 	
 	@Test
 	public void testDelete() {
-		this.techserv.deleteTechnology(this.tech2.getTechId());
+		assertEquals(true, techserv.deleteTechnology(1));
 	}
 	
-	/*
+	
 	@Test
 	public void testDeleteError() {
-		Throwable exception = assertThrows(IllegalArgumentException.class, () -> techserv.deleteTechnology(-5));
-		assertThat(exception).hasMessageThat().contains("woops!");
+		assertEquals(false, techserv.deleteTechnology(-5));
 	}
-	*/
 	
 	@Test
 	public void testUpdateReturnsTechnology() {
-		when(techdao.save(tech2)).thenReturn(tech2);
-		techdao.save(tech2);
-		tech2.setTechName("html");
-		assertEquals(tech2, techserv.update(tech2));
+		when(techdao.save(tech1.get())).thenReturn(tech1.get());
+		when(techdao.findById(1)).thenReturn(tech1);
+		
+		techdao.save(tech1.get());
+		tech1.get().setTechName("html");
+		assertEquals(tech1.get(), techserv.update(tech1.get()));
 	}
 	
-	/*
+	
 	@Test
 	public void testUpdateThrowsIllegalArgumentException() {
-		System.out.println(techserv.update(null));
+		when(techdao.findById(-4)).thenReturn(Optional.empty());
 		
-		Throwable exception = assertThrows(IllegalArgumentException.class, () -> techserv.update(null));
-		assertEquals("TechId cannot be less than 0", exception.getMessage());
+		tech1.get().setTechId(-4);;
+		assertEquals(null, techserv.update(tech1.get()));
 	}
-	*/
+	
 	
 	@Test
 	public void testFindAllReturnsAllTechnologys() {
