@@ -26,13 +26,13 @@ public class CurriculumService {
 	}
 	
 	@Transactional(readOnly=true)
-	public Optional<Curriculum> getById(int id) {
-		return cDAO.getById(id);
+	public Optional<Curriculum> getByCurriculumId(int id) {
+		return cDAO.getByCurriculumId(id);
 	}
 	
 	@Transactional(readOnly=true)
-	public Optional<Curriculum> getByName(String name) {
-		return cDAO.getByName(name);
+	public Curriculum getByCurriculumName(String name) {
+		return cDAO.getByCurriculumName(name);
 	}
 
 	public void removeById(int id) {
@@ -45,7 +45,7 @@ public class CurriculumService {
 
 	public void removeByName(String name) {
 		try {
-			cDAO.deleteByName(name);
+			cDAO.deleteByCurriculumName(name);
 		} catch (IllegalArgumentException e) {
 			//logger.warn("id can't be null to deleteById()");
 		}

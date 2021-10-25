@@ -38,15 +38,15 @@ public class CurriculumController {
 		}
 		
 		// find by name
-		@GetMapping("/find/name}")
+		@GetMapping("/findId/{id}")
 		public ResponseEntity<Optional<Curriculum>> findById(@PathVariable("id") int id) {
-			return ResponseEntity.ok(cserv.getById(id));
+			return ResponseEntity.ok(cserv.getByCurriculumId(id));
 		}
 		
 		// find by name
-		@GetMapping("/find/name}")
-		public ResponseEntity<Optional<Curriculum>> findByName(@PathVariable("name") String name) {
-			return ResponseEntity.ok(cserv.getByName(name));
+		@GetMapping("/findName/{name}")
+		public ResponseEntity<Curriculum> findByName(@PathVariable("name") String name) {
+			return ResponseEntity.ok(cserv.getByCurriculumName(name));
 		}
 		
 		// update by id
