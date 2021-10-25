@@ -18,7 +18,7 @@ import com.revature.repository.TopicDao;
 import com.revature.service.TopicService;
 
 @SpringBootTest(classes= {TopicService.class,TopicDao.class})
-public class TopicServiceTests {
+class TopicServiceTests {
 	
 	@MockBean
 	TopicDao topicDao;
