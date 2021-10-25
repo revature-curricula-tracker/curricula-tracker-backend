@@ -27,8 +27,8 @@ public class TopicService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
-	public void save(final Topic topic) {
-		this.topicDao.save(topic);
+	public Topic save(final Topic topic) {
+		return this.topicDao.save(topic);
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
