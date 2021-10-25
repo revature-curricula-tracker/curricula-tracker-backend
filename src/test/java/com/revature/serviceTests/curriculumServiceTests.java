@@ -60,10 +60,7 @@ public class curriculumServiceTests {
 	void deleteCurriculum_success() {
 		this.cs.removeById(this.curriculum.getCurriculumId());
 	}
-	@Test
-	void deleteCurriculumByName_success() {
-		this.cs.removeByName(this.curriculum.getCurriculumName());
-	}
+
 	@Test
 	void findAll_Test() {
 		List<Curriculum> curricula = this.cs.findAll();

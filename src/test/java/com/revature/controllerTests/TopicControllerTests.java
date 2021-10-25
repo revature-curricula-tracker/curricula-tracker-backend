@@ -54,5 +54,7 @@ public class TopicControllerTests {
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}
+	
+
 
 }

@@ -2,6 +2,7 @@ package com.revature.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Curriculum {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int curriculumId;
 	
-	@OneToMany(mappedBy= "curriculum")
+	@OneToMany(mappedBy= "curriculum", cascade = CascadeType.ALL)
 	@JsonIgnore//Properties(value="curriculum", allowSetters=true)
 	Set<CurriculumTopic> curriculumTopics;
 	

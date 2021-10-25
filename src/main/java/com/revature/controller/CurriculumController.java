@@ -57,15 +57,9 @@ public class CurriculumController {
 		}
 		
 		//delete by id
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/deleteById/{id}")
 		public void removeCurriculumById(@PathVariable("id") int id) {
 			cserv.removeById(id);
-		}
-		
-		// delete by name
-		@DeleteMapping("/{name}")
-		public void removeCurriculumByName(@PathVariable("name") String name) {
-			cserv.removeByName(name);
 		}
 
 }
