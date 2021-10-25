@@ -6,6 +6,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,11 +26,13 @@ public class CurriculumTopic {
 	    @ManyToOne
 	    @MapsId("curriculum_id")
 	    @JoinColumn(name = "curriculum_id")
+		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
 	   	Curriculum curriculum;
 
 	    @ManyToOne
 	    @MapsId("topic_id")
 	    @JoinColumn(name = "topic_id")
+		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
 	    Topic topic;
 
 	    private int topicDay;
