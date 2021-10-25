@@ -33,7 +33,8 @@ public class TechnologyService {
 	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name)
 	{
-		return tDao.getByName(name);
+		return Optional.of(tDao.getByName(name)
+				.orElseThrow(() -> new TechnologyNotFoundException("No technology found with name: " + name)));
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -57,7 +58,7 @@ public class TechnologyService {
 		{
 			tDao.save(tech);
 		}
-		catch(TechnologyNotFoundException e)
+		catch(IllegalArgumentException e)
 		{
 			log.warn("Technology can't be found, update failed.");
 		}
