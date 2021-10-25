@@ -1,7 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.revature.model.Curriculum;
 import com.revature.service.CurriculumService;
 
@@ -33,14 +34,14 @@ public class CurriculumController {
 	
 		// find all
 		@GetMapping
-		public ResponseEntity<Set<Curriculum>> findAll() {
+		public ResponseEntity<List<Curriculum>> findAll() {
 			return ResponseEntity.ok(cserv.findAll());
 		}
 		
 		// find by name
 		@GetMapping("/findId/{id}")
-		public ResponseEntity<Optional<Curriculum>> findById(@PathVariable("id") int id) {
-			return ResponseEntity.ok(cserv.getByCurriculumId(id));
+		public ResponseEntity<Curriculum> findById(@PathVariable("id") int id) {
+			return ResponseEntity.ok(cserv.getById(id));
 		}
 		
 		// find by name
