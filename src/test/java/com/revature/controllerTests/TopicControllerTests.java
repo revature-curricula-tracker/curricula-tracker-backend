@@ -103,6 +103,8 @@ public class TopicControllerTests {
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}
+	
+
 
 	@Test
 	public void deleteTopic_success() throws Exception {

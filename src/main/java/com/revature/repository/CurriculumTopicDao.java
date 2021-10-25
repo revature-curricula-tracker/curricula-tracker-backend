@@ -12,11 +12,5 @@ import com.revature.model.Topic;
 
 @Repository
 public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integer> {
-	
-	public Optional<Set<CurriculumTopic>> getAllByCurriculum(Curriculum curriculum);
-	
-	public Optional<Set<CurriculumTopic>> getAllByTopic(Topic topic);
-	
-	public Optional<Set<CurriculumTopic>> getAllTopicsByTopicDay(int topic_day);
 
 }
