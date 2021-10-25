@@ -9,14 +9,13 @@ import com.revature.model.Curriculum;
 @Repository
 public interface CurriculumDao extends JpaRepository<Curriculum, Integer> {
 	
-	public Optional<Set<Curriculum>> getAll();
 	
-	public Optional<Curriculum> getById(int id);
+	public Optional<Curriculum> getByCurriculumId(int id);
 	
-	public Optional<Curriculum> getByName(String name);
+	public Curriculum getByCurriculumName(String curriculumName);
 	
-	public void deleteById(int id);
+	public void deleteByCurriculumId(int id);
 	
-	public void deleteByName(String name);
+	public void deleteByCurriculumName(String name);
 
 }
