@@ -59,7 +59,7 @@ class CurriculumServiceTests {
 	@Test
 	void deleteCurriculum_success() {
 		this.cs.removeById(this.curriculum.getCurriculumId());
-		assertEquals(true,true);
+		assertEquals(2, this.curriculum.getCurriculumId());
 	}
 
 	@Test
