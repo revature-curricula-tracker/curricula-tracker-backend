@@ -19,40 +19,39 @@ import com.revature.model.Technology;
 import com.revature.service.TechnologyService;
 
 @RestController
-@RequestMapping("/technology")
+@RequestMapping("/tech")
 public class TechnologyController {
 	
 	@Autowired
 	public TechnologyService techServ;
 	
-	@GetMapping("/findById")
-	public ResponseEntity<Optional<Technology>> findById(@RequestParam("id") int id){
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<Technology>> findByTechId(@RequestParam("id") int id){
 		return ResponseEntity.ok(techServ.getById(id));
 	}
 	
-	@GetMapping("/findByUsername")
-	public ResponseEntity<Optional<Technology>> findByUsername(@RequestParam("username") String username){
-		return ResponseEntity.ok(techServ.getByName(username));
+	@GetMapping("/search/{name}")
+	public ResponseEntity<Optional<Technology>> findByTechName(@RequestParam("Name") String name){
+		return ResponseEntity.ok(techServ.getByName(name));
 	}
 	
-	@GetMapping("/findAll")
+	@GetMapping
 	public ResponseEntity<List<Technology>> findAll(){
 		return ResponseEntity.ok(techServ.findAll());
 	}
 	
-	@PostMapping("/insert")
+	@PostMapping("/add")
 	public ResponseEntity<Technology> insert(@RequestBody Technology t){
 		return ResponseEntity.ok(techServ.insertTechnology(t));
 	}
 	
-	@PatchMapping("/update")
+	@PatchMapping("/{id}")
 	public ResponseEntity<Technology> update(@RequestBody Technology t){
 		return ResponseEntity.ok(techServ.update(t));
 	}
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<Void> delete(@PathVariable int id){
-		techServ.deleteTechnology(id);
-		return ResponseEntity.noContent().build();
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> delete(@PathVariable int id){
+		return ResponseEntity.ok(techServ.deleteTechnology(id));
 	}
 }

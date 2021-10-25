@@ -15,6 +15,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +38,7 @@ public class Technology {
 	private String techName;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
+	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 
 }
