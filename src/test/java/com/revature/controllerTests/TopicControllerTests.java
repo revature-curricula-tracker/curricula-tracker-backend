@@ -60,7 +60,7 @@ class TopicControllerTests {
 	}
 
 	@Test
-	private void findAll_returnsList() throws Exception {
+	void findAll_returnsList() throws Exception {
 		when(this.service.findAll()).thenReturn(this.topicList);
 		
 		this.mvc.perform(get( PATH ))
@@ -69,7 +69,7 @@ class TopicControllerTests {
 	}
 
 	@Test
-	private void getTopicById_returnsTopic() throws Exception {
+	void getTopicById_returnsTopic() throws Exception {
 		when(this.service.findById( this.topic.getId() )).thenReturn(this.topic);
 		
 		this.mvc.perform(get( PATH + this.topic.getId() ))
@@ -78,7 +78,7 @@ class TopicControllerTests {
 	}
 
 	@Test
-	private void getTopicByName_returnsTopic() throws Exception {
+	void getTopicByName_returnsTopic() throws Exception {
 		when(this.service.findByName( this.topic.getName() )).thenReturn(this.topicList);
 		
 		this.mvc.perform(get( PATH + "search/" + this.topic.getName()))
@@ -87,7 +87,7 @@ class TopicControllerTests {
 	}
 
 	@Test
-	private void addTopic_returnsTopic() throws Exception {
+	void addTopic_returnsTopic() throws Exception {
 		when(this.service.save(this.topic)).thenReturn(this.topic);
 		
 		this.mvc.perform(post( PATH + "add" ).content(this.topicJson).contentType(MediaType.APPLICATION_JSON) )
@@ -96,7 +96,7 @@ class TopicControllerTests {
 	}
 
 	@Test
-	private void updateTopic_returnsTopic() throws Exception {
+	void updateTopic_returnsTopic() throws Exception {
 		when(this.service.update(this.topic)).thenReturn(this.topic);
 		
 		this.mvc.perform(put( PATH + this.topic.getId()).content(this.topicJson).contentType(MediaType.APPLICATION_JSON))
@@ -107,7 +107,7 @@ class TopicControllerTests {
 
 
 	@Test
-	private void deleteTopic_success() throws Exception {
+	void deleteTopic_success() throws Exception {
 		this.mvc.perform(delete( PATH + this.topic.getId() ))
 			.andExpect( status().isOk() );
 	}
