@@ -33,7 +33,7 @@ public class TechnologyService {
 	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name)
 	{
-		return Optional.of(tDao.getByName(name)
+		return Optional.of(tDao.getByTechName(name)
 				.orElseThrow(() -> new TechnologyNotFoundException("No technology found with name: " + name)));
 	}
 
