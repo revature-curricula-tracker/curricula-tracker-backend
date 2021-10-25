@@ -55,7 +55,7 @@ class technologyServiceTests {
 	@Test
 	public void testGetByNameReturnsTechnology() {
 		Optional<Technology> expected = tech1;
-		when(techdao.getByName("java")).thenReturn(tech1);
+		when(techdao.getByTechName("java")).thenReturn(tech1);
 		assertEquals(expected, techserv.getByName("java"));
 	}
 	

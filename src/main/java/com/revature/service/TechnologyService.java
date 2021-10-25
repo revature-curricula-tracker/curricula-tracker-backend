@@ -33,8 +33,7 @@ public class TechnologyService {
 	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name)
 	{
-		return Optional.of(tDao.getByName(name)
-				.orElseThrow(() -> new TechnologyNotFoundException("No technology found with name: " + name)));
+		return Optional.of(tDao.getByTechName(name).get());
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
