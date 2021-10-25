@@ -39,6 +39,11 @@ public class TopicService {
 	}
 	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public Topic update(final Topic topic) {
+		return this.topicDao.save(topic);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final Topic topic) {
 		this.topicDao.delete(topic);
 	}
