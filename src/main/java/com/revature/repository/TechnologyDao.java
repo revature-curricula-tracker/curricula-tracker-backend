@@ -11,5 +11,6 @@ public interface TechnologyDao extends JpaRepository<Technology, Integer>{
 	public Technology getByTechId(int id);
 	
 	public Technology getByTechName(String name);
+
 	
 }
