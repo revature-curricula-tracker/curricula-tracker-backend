@@ -16,22 +16,22 @@ public class CurriculumService {
 
 	@Autowired
 	private CurriculumDao cDAO;
-	
+
 	public Curriculum insert(@Valid Curriculum c) {
 		return cDAO.save(c);
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public List<Curriculum> findAll() {
 		return cDAO.findAll();
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public Curriculum getById(int id) {
 		return cDAO.findByCurriculumId(id);
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public Curriculum getByCurriculumName(String name) {
 		return cDAO.findByCurriculumName(name);
 	}
