@@ -37,11 +37,7 @@ public class CurriculumService {
 	}
 
 	public void removeById(int id) {
-		try {
-			cDAO.deleteById(id);
-		} catch (IllegalArgumentException e) {
-			//logger.warn("id can't be null to deleteById()");
-		}
+		cDAO.deleteById(id);
 	}
 
 	public Curriculum update(@Valid Curriculum c) {
