@@ -28,7 +28,7 @@ public class TopicService {
 	
 	/**
 	 * Returns a Topic object if one exists with the specified id, otherwise returns null.
-	 * @param 	id	the id of the topic
+	 * @param 	id	the id of the Topic
 	 * @return 		a list of all Topics
 	 */
 	@Transactional(readOnly=true)
@@ -39,7 +39,7 @@ public class TopicService {
 
 	/**
 	 * Returns a list of Topics that have the specified name.
-	 * @param 	name	the name of the topic
+	 * @param 	name	the name of the Topic
 	 * @return 			a list of all Topics with specified name
 	 */
 	@Transactional(readOnly=true)
@@ -49,8 +49,8 @@ public class TopicService {
 	
 	/**
 	 * Saves a new Topic object in the database, and then returns the saved Topic.
-	 * @param 	topic	the topic object to be saved
-	 * @return 			the topic object that was saved
+	 * @param 	topic	the Topic object to be saved
+	 * @return 			the Topic object that was saved
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public Topic save(final Topic topic) {
@@ -59,8 +59,8 @@ public class TopicService {
 	
 	/**
 	 * Updates a Topic object in the database, and then returns the updated Topic.
-	 * @param 	topic	the topic object to be updated
-	 * @return 			the topic object that was updated
+	 * @param 	topic	the Topic object to be updated
+	 * @return 			the Topic object that was updated
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public Topic update(final Topic topic) {
@@ -69,7 +69,7 @@ public class TopicService {
 	
 	/**
 	 * Deletes a specified Topic object in the database if it exists.
-	 * @param 	topic	the topic object to be deleted
+	 * @param 	topic	the Topic object to be deleted
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final Topic topic) {
@@ -78,7 +78,7 @@ public class TopicService {
 	
 	/**
 	 * Deletes a Topic object with specified id in the database if it exists.
-	 * @param 	id	the id of the topic object to be deleted
+	 * @param 	id	the id of the Topic object to be deleted
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final int id) {
