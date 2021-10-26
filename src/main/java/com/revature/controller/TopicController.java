@@ -27,31 +27,49 @@ public class TopicController {
 	TopicService topicService;
 
 	@GetMapping
+	/*
+	 * controller that calls the findAll method
+	 */
 	public List<Topic> findAll() {
 		return topicService.findAll();
 	}
 
 	@GetMapping("/{id}")
+	/*
+	 * controller that calls the findById method
+	 */
 	public Topic getTopicById(@PathVariable("id") final int id) {
 		return topicService.findById(id);
 	}
 
 	@GetMapping("/search/{name}")
+	/*
+	 * controller that calls the findByName method
+	 */
 	public List<Topic> getTopicByName(@PathVariable("name") final String name) {
 		return topicService.findByName(name);
 	}
 
 	@PostMapping("/add")
+	/*
+	 * controller that calls the save method
+	 */
 	public Topic addTopic(@Valid @RequestBody final Topic t) {
 		return topicService.save(t);
 	}
 
 	@PutMapping("/{id}")
+	/*
+	 * controller that calls the update method
+	 */
 	public Topic updateTopic(@Valid @RequestBody final Topic t) {
 		return topicService.update(t);
 	}
 
 	@DeleteMapping("/{id}")
+	/*
+	 * controller that calls the delete method
+	 */
 	public void delete(@PathVariable final int id) {
 		topicService.delete(id);
 	}

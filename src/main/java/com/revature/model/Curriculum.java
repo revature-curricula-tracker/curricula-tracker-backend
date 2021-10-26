@@ -26,30 +26,34 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Curriculum implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -8875201762940135665L;
 
 	@Id
 	@Column(name="curriculum_id", nullable = false, unique=true, updatable=false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//contains unique curriculumId for object
 	private int curriculumId;
 	
 	@OneToMany(mappedBy= "curriculum", cascade = CascadeType.ALL)
 	@JsonIgnore//Properties(value="curriculum", allowSetters=true)
+	//set containing all topics in the curriculum
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	
 	@Length(min = 1)
 	@NotBlank
+	//name of the curriculum
 	private String curriculumName;
 	
+	//number of weeks the curriculum has
 	private int numWeeks;
 	
+	//number of days in the curriculum
 	private int numDays;
 
 	@Override
+	//gives the curriculum information in string format
 	public String toString() {
 		return "Curriculum [curriculumId=" + curriculumId + ", curriculumTopics=" + curriculumTopics
 				+ ", curriculumName=" + curriculumName + ", numWeeks=" + numWeeks + ", numDays=" + numDays + "]";

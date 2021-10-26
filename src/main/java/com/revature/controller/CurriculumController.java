@@ -23,9 +23,15 @@ import com.revature.service.CurriculumService;
 public class CurriculumController {
 
 	@Autowired
+	/*
+	 * CuriculumService class autowired in to use its methods
+	 */
 	private CurriculumService cserv;
 
 	@PostMapping("/add")
+	/*
+	 * controller that calls the insert method
+	 */
 	public Curriculum insert(@Valid @RequestBody Curriculum c) {
 		return cserv.insert(c);
 	}
