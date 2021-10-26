@@ -1,8 +1,6 @@
 package com.revature.serviceTests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ import com.revature.repository.TechnologyDao;
 import com.revature.service.TechnologyService;
 
 @SpringBootTest(classes= {TechnologyService.class, TechnologyDao.class})
-class technologyServiceTests {
+class TechnologyServiceTests {
 	
 	@MockBean
 	TechnologyDao techdao;
@@ -46,39 +44,39 @@ class technologyServiceTests {
 	}
 	
 	@Test
-	public void testGetByIdReturnsTechnology() {
+	void testGetByIdReturnsTechnology() {
 		Optional<Technology> expected = tech1;
 		when(techdao.findById(1)).thenReturn(tech1);
 		assertEquals(expected.get(), techserv.getById(1).get());
 	}
 	
 	@Test
-	public void testGetByNameReturnsTechnology() {
+	void testGetByNameReturnsTechnology() {
 		Optional<Technology> expected = tech1;
 		when(techdao.getByTechName("java")).thenReturn(tech1);
 		assertEquals(expected, techserv.getByName("java"));
 	}
 	
 	@Test
-	public void testSaveReturnsTechnology() {
+	void testSaveReturnsTechnology() {
 		Technology expected = tech2;
 		when(techdao.save(tech2)).thenReturn(tech2);
 		assertEquals(expected, techserv.insertTechnology(tech2));
 	}
 	
 	@Test
-	public void testDelete() {
+	void testDelete() {
 		assertEquals(true, techserv.deleteTechnology(1));
 	}
 	
 	
 	@Test
-	public void testDeleteError() {
+	void testDeleteError() {
 		assertEquals(false, techserv.deleteTechnology(-5));
 	}
 	
 	@Test
-	public void testUpdateReturnsTechnology() {
+	void testUpdateReturnsTechnology() {
 		when(techdao.save(tech1.get())).thenReturn(tech1.get());
 		when(techdao.findById(1)).thenReturn(tech1);
 		
@@ -89,7 +87,7 @@ class technologyServiceTests {
 	
 	
 	@Test
-	public void testUpdateThrowsIllegalArgumentException() {
+	void testUpdateThrowsIllegalArgumentException() {
 		when(techdao.findById(-4)).thenReturn(Optional.empty());
 		
 		tech1.get().setTechId(-4);;
@@ -98,7 +96,7 @@ class technologyServiceTests {
 	
 	
 	@Test
-	public void testFindAllReturnsAllTechnologys() {
+	void testFindAllReturnsAllTechnologys() {
 		List<Technology> techs = new LinkedList<Technology>();
 		techs.add(tech2);
 		techs.add(tech3);
