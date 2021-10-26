@@ -8,6 +8,6 @@ import com.revature.model.CurriculumTopicKey;
 
 @Repository
 public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integer> {
+
 	
-//	public void CurriculumTopicDelete(CurriculumTopicKey ctk);
 }
