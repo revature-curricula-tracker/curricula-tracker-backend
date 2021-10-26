@@ -104,12 +104,10 @@ class TopicControllerTests {
 			.andExpect( content().json(this.topicJson) );
 	}
 	
-
-
 	@Test
 	void deleteTopic_success() throws Exception {
 		this.mvc.perform(delete( PATH + this.topic.getId() ))
 			.andExpect( status().isOk() );
 	}
-
+	
 }
