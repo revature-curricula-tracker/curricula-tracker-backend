@@ -1,5 +1,6 @@
 package com.revature.controllerTests;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -23,6 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controller.TopicController;
+import com.revature.model.Technology;
 import com.revature.model.Topic;
 import com.revature.service.TopicService;
 
@@ -111,5 +113,4 @@ class TopicControllerTests {
 		this.mvc.perform(delete( PATH + this.topic.getId() ))
 			.andExpect( status().isOk() );
 	}
-
 }
