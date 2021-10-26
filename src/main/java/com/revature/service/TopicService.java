@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,6 +86,7 @@ public class TopicService {
 	 * @param 	id	the id of the Topic object to be deleted
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	@Modifying
 	public void delete(final int id) {
 		this.ctDAO.deleteByTopicId(id);
 		Topic temp = findById(id);
