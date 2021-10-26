@@ -17,7 +17,12 @@ public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integ
 	
 	 @Transactional
 	 @Modifying
-     @Query("DELETE FROM CurriculumTopic WHERE curriculum_id =:#{#id}") // 
+     @Query("DELETE FROM CurriculumTopic WHERE curriculum_id =:#{#id}")
      void deleteByCuriculumId(@Param("id")int CurriculumId);
+	 
+	 @Transactional
+	 @Modifying
+     @Query("DELETE FROM CurriculumTopic WHERE topic_id =:#{#id}") 
+     void deleteByTopicId(@Param("id")int TopicId);
 	
 }

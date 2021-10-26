@@ -33,7 +33,7 @@ public class CurriculumTopic implements Serializable {
 	    @ManyToOne
 	    @MapsId("id")
 	    @JoinColumn(name = "topic_id")
-		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
+		@JsonIgnoreProperties(value={"curriculumTopics","technology"}, allowSetters=true)
 	    private Topic topic;
 
 	    private int topicDay;

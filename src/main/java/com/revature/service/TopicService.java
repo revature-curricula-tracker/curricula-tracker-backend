@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Topic;
+import com.revature.repository.CurriculumTopicDao;
 import com.revature.repository.TopicDao;
 
 @Service
@@ -16,6 +17,9 @@ public class TopicService {
 
 	@Autowired
 	private TopicDao topicDao;
+	
+	@Autowired
+	private CurriculumTopicDao ctDAO;
 	
 	/**
 	 * Returns a list of all Topics stored in the database.
@@ -82,6 +86,10 @@ public class TopicService {
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final int id) {
+		this.ctDAO.deleteByTopicId(id);
+		Topic temp = findById(id);
+		temp.setTechnology(null);
+		temp = update(temp);
 		this.topicDao.deleteById(id);
 	}
 	
