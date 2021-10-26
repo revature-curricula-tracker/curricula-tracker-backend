@@ -27,7 +27,10 @@ public class CurriculumTopicService {
 		return ctDAO.findAll();
 	}
 	
-//	public void removeByIds(int curriculumId, int topicId) {
-//		ctDAO.CurriculumTopicDelete(new CurriculumTopicKey(curriculumId, topicId));
-//	}
+	public void removeByIds(int curriculumId, int topicId) {
+		CurriculumTopicKey id = new CurriculumTopicKey();
+		id.setCurriculumId(curriculumId);
+		id.setTopicId(topicId);
+		ctDAO.delete(new CurriculumTopic(id, null, null, 0));
+	}
 }

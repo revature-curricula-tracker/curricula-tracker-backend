@@ -37,8 +37,8 @@ public class CurriculumTopicController {
 	}
 	
 	// delete by id
-//	@DeleteMapping("/deleteByIds/{curriculumId}&{topicId}")
-//	public void removeCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {
-//		ctServ.removeByIds(curriculumId, topicId);
-//	}
+	@DeleteMapping("/deleteByIds/{curriculumId}&{topicId}")
+	public void removeCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {
+		ctServ.removeByIds(curriculumId, topicId);
+	}
 }
