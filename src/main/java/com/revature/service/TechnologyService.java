@@ -31,11 +31,7 @@ public class TechnologyService {
 
 	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name) {
-		if (tDao.getByTechName(name).isPresent()) {
-			return Optional.of(tDao.getByTechName(name).get());
-		} else {
-			return Optional.empty();
-		}
+		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
