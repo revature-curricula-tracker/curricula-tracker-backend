@@ -29,9 +29,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Technology implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 948887999117032042L;
 
 	@Id

@@ -24,34 +24,55 @@ import com.revature.service.TechnologyService;
 public class TechnologyController {
 
 	@Autowired
+	/*
+	 * TechnologyService class autowired in for the controller to use its methods
+	 */
 	public TechnologyService techServ;
 
 	@GetMapping("/{id}")
+	/*
+	 * controller that calls the getByTechId method
+	 */
 	public Optional<Technology> findByTechId(@RequestParam("id") int id) {
 		return techServ.getById(id);
 	}
 
 	@GetMapping("/search/{name}")
+	/*
+	 * controller that calls the findByTechName method
+	 */
 	public Optional<Technology> findByTechName(@RequestParam("Name") String name) {
 		return techServ.getByName(name);
 	}
 
 	@GetMapping
+	/*
+	 * controller that calls the findAll method
+	 */
 	public List<Technology> findAll() {
 		return techServ.findAll();
 	}
 
 	@PostMapping("/add")
+	/*
+	 * controller that calls the insert method
+	 */
 	public Technology insert(@RequestBody Technology t) {
 		return techServ.insertTechnology(t);
 	}
 
 	@PatchMapping("/{id}")
+	/*
+	 * controller that calls the update method
+	 */
 	public Technology update(@RequestBody Technology t) {
 		return techServ.update(t);
 	}
 
 	@DeleteMapping("/{id}")
+	/*
+	 * controller that calls the delete method
+	 */
 	public Boolean delete(@PathVariable int id) {
 		return techServ.deleteTechnology(id);
 	}
