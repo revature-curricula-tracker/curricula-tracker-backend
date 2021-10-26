@@ -43,7 +43,7 @@ public class TechnologyControllerTester {
 	@BeforeEach
 	void setup()
 	{
-		tech = new Technology(1, "testy", new ArrayList<Topic>());
+		tech = new Technology(1, "testy", new ArrayList<Topic>(), "red");
 	}
 	
 	@Test

@@ -40,9 +40,9 @@ class technologyServiceTests {
 	void construct() {
 		MockitoAnnotations.openMocks(this);
 
-		this.tech1 = Optional.ofNullable(new Technology(1, "java", new ArrayList<Topic>()));
-		this.tech2 = new Technology(2, "sql", new ArrayList<Topic>());
-		this.tech3 = new Technology(3, "javascript", new ArrayList<Topic>());
+		this.tech1 = Optional.ofNullable(new Technology(1, "java", new ArrayList<Topic>(), "red"));
+		this.tech2 = new Technology(2, "sql", new ArrayList<Topic>(), "green");
+		this.tech3 = new Technology(3, "javascript", new ArrayList<Topic>(), "blue");
 	}
 	
 	@Test
