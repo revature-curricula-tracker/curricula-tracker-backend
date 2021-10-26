@@ -3,6 +3,8 @@ package com.revature.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Technology;
@@ -33,7 +34,7 @@ public class TechnologyController {
 	/*
 	 * controller that calls the getByTechId method
 	 */
-	public Optional<Technology> findByTechId(@RequestParam("id") int id) {
+	public Optional<Technology> findByTechId(@PathVariable ("id") int id) {
 		return techServ.getById(id);
 	}
 
@@ -41,7 +42,7 @@ public class TechnologyController {
 	/*
 	 * controller that calls the findByTechName method
 	 */
-	public Optional<Technology> findByTechName(@RequestParam("Name") String name) {
+	public Optional<Technology> findByTechName(@PathVariable("name") String name) {
 		return techServ.getByName(name);
 	}
 
@@ -57,7 +58,7 @@ public class TechnologyController {
 	/*
 	 * controller that calls the insert method
 	 */
-	public Technology insert(@RequestBody Technology t) {
+	public Technology insert(@Valid @RequestBody Technology t) {
 		return techServ.insertTechnology(t);
 	}
 
