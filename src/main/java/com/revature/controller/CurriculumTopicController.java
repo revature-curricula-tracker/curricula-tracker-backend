@@ -36,6 +36,11 @@ public class CurriculumTopicController {
 		return ctServ.findAll();
 	}
 	
+	//find by ID
+	@GetMapping("/findByIds/{curriculumId}&{topicId}")
+	public CurriculumTopic findCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {
+		return ctServ.findByIds(curriculumId, topicId);
+	}
 	// delete by id
 	@DeleteMapping("/deleteByIds/{curriculumId}&{topicId}")
 	public void removeCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {

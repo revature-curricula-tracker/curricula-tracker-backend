@@ -9,5 +9,7 @@ import com.revature.model.CurriculumTopicKey;
 @Repository
 public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integer> {
 
+	CurriculumTopic findByCurriculumTopicKey(CurriculumTopicKey id);
+
 	
 }

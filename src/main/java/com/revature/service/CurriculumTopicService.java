@@ -33,4 +33,12 @@ public class CurriculumTopicService {
 		id.setTopicId(topicId);
 		ctDAO.delete(new CurriculumTopic(id, null, null, 0));
 	}
+	
+	@Transactional(readOnly = true)
+	public CurriculumTopic findByIds(int curriculumId, int topicId) {
+		CurriculumTopicKey id = new CurriculumTopicKey();
+		id.setCurriculumId(curriculumId);
+		id.setTopicId(topicId);
+		return ctDAO.findByCurriculumTopicKey(id);
+	}
 }
