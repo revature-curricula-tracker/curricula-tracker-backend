@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.exceptions.TechnologyNotFoundException;
 
 @SpringBootTest(classes = TechnologyNotFoundException.class)
-public class TechNotFoundTest {
+class TechNotFoundTest {
 
 	@Test
-	public void whenExceptionThrown_thenAssertionSucceeds() {
+	void whenExceptionThrown_thenAssertionSucceeds() {
 	    Exception exception = assertThrows(TechnologyNotFoundException.class, () -> {
 	        throw new TechnologyNotFoundException("Tech not found");
 	    });
