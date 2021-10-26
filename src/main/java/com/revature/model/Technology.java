@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,8 +27,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Technology {
+public class Technology implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 948887999117032042L;
+
 	@Id
 	@Column(name = "tech_id", nullable = false, unique = true, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

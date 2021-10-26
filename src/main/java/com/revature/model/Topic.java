@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -27,7 +28,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Topic {
+public class Topic implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3251404690818761188L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
