@@ -5,7 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,39 +20,40 @@ import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TopicController {
 
 	@Autowired
 	TopicService topicService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Topic>> findAll() {
-		return ResponseEntity.ok(topicService.findAll());
+	public List<Topic> findAll() {
+		return topicService.findAll();
 	}
-	
-	@GetMapping("/{id}") 
-	public ResponseEntity<Topic> getTopicById(@PathVariable("id") final int id) {
-		return ResponseEntity.ok(topicService.findById(id));
+
+	@GetMapping("/{id}")
+	public Topic getTopicById(@PathVariable("id") final int id) {
+		return topicService.findById(id);
 	}
-	
-	@GetMapping("/search/{name}") 
-	public ResponseEntity<List<Topic>> getTopicByName(@PathVariable("name") final String name) {
-		return ResponseEntity.ok(topicService.findByName(name));
+
+	@GetMapping("/search/{name}")
+	public List<Topic> getTopicByName(@PathVariable("name") final String name) {
+		return topicService.findByName(name);
 	}
-	
-	@PostMapping("/add")			
-	public ResponseEntity<Topic> addTopic(@Valid @RequestBody final Topic t) {
-		return ResponseEntity.ok(topicService.save(t));
+
+	@PostMapping("/add")
+	public Topic addTopic(@Valid @RequestBody final Topic t) {
+		return topicService.save(t);
 	}
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<Topic> updateTopic(@Valid @RequestBody final Topic t) {
-		return ResponseEntity.ok(topicService.update(t));
+	public Topic updateTopic(@Valid @RequestBody final Topic t) {
+		return topicService.update(t);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable final int id) {
 		topicService.delete(id);
-    }
-	
+	}
+
 }

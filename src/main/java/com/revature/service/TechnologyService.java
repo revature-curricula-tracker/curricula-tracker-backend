@@ -28,10 +28,10 @@ public class TechnologyService {
 	public Optional<Technology> getById(int id) {
 		return tDao.findById(id);
 	}
-	
+
 	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name) {
-		return Optional.of(tDao.getByTechName(name).get());
+		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -52,12 +52,12 @@ public class TechnologyService {
 			return false;
 		}
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Technology update(Technology tech) {
 
 		try {
-		
+
 			Optional<Technology> foundTech = tDao.findById(tech.getTechId());
 			if (foundTech.isPresent()) {
 				return tDao.save(tech);
@@ -66,7 +66,7 @@ public class TechnologyService {
 			}
 		}
 
-		catch(IllegalArgumentException e)
+		catch (IllegalArgumentException e)
 
 		{
 
