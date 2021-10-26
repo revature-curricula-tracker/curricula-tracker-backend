@@ -22,6 +22,7 @@ public class CurriculumTopic implements Serializable {
 	
 
 	    @EmbeddedId
+	    //unique key for the CurriculumTopic
 	    CurriculumTopicKey curriculumTopicKey;
 
 	    @ManyToOne

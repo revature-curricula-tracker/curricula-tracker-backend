@@ -30,28 +30,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Topic implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3251404690818761188L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, unique = true, updatable = false)
+	//unique integer generated for each Topic
 	private int id;
 	
 	@Length(min=1)
+	//you know what this is
 	private String name;
 	
 	@Length(min=1, max=1000)
+	//String that details what each Topic entails
 	private String description;
 
 	@OneToMany(mappedBy= "topic")
 	@JsonIgnore//Properties(value="topic", allowSetters=true)
+	//set containing all CurriculumTopics
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
+	//Technology that uses the Topic
 	private Technology technology;
 }
