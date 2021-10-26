@@ -20,39 +20,39 @@ import com.revature.service.CurriculumService;
 
 @RestController
 @RequestMapping("/curriculum")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CurriculumController {
 	
 	@Autowired
 	private CurriculumService cserv;
 	
 		@PostMapping("/add")
-		public ResponseEntity<Curriculum> insert(@Valid @RequestBody Curriculum c ) {
-			return ResponseEntity.ok(cserv.insert(c));
+		public Curriculum insert(@Valid @RequestBody Curriculum c ) {
+			return cserv.insert(c);
 		}
 	
 		// find all
 		@GetMapping
-		public ResponseEntity<List<Curriculum>> findAll() {
-			return ResponseEntity.ok(cserv.findAll());
+		public List<Curriculum> findAll() {
+			return cserv.findAll();
 		}
 		
 		// find by name
 		@GetMapping("/findId/{id}")
-		public ResponseEntity<Curriculum> findById(@PathVariable("id") int id) {
-			return ResponseEntity.ok(cserv.getById(id));
+		public Curriculum findById(@PathVariable("id") int id) {
+			return cserv.getById(id);
 		}
 		
 		// find by name
 		@GetMapping("/findName/{name}")
-		public ResponseEntity<Curriculum> findByName(@PathVariable("name") String name) {
-			return ResponseEntity.ok(cserv.getByCurriculumName(name));
+		public Curriculum findByName(@PathVariable("name") String name) {
+			return cserv.getByCurriculumName(name);
 		}
 		
 		// update by id
 		@PostMapping("/update")
-		public ResponseEntity<Curriculum> updateById(@Valid @RequestBody Curriculum c ) {
-			return ResponseEntity.ok(cserv.update(c));
+		public Curriculum updateById(@Valid @RequestBody Curriculum c ) {
+			return cserv.update(c);
 		}
 		
 		//delete by id
