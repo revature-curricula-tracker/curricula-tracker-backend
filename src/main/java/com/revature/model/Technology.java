@@ -37,14 +37,27 @@ public class Technology implements Serializable {
 	@Id
 	@Column(name = "tech_id", nullable = false, unique = true, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	/*
+	 * contains a generated integer techId that is unique to each Technology
+	 */
 	private int techId;
 	
 	@Length(min = 1)
 	@NotBlank
+	/*
+	 * contains unique name for the Technology
+	 */
 	private String techName;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
 	@JsonIgnoreProperties(value="technology", allowSetters=true)
+	/*
+	 * contains a list with all Topics included in the Technology
+	 */
 	private List<Topic> topics;
-
+	
+	/*
+	 * the color of the Technology
+	 */
+	private String color;
 }
