@@ -1,7 +1,6 @@
 package com.revature.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,32 +16,28 @@ public class CurriculumService {
 
 	@Autowired
 	private CurriculumDao cDAO;
-	
+
 	public Curriculum insert(@Valid Curriculum c) {
 		return cDAO.save(c);
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public List<Curriculum> findAll() {
 		return cDAO.findAll();
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public Curriculum getById(int id) {
 		return cDAO.findByCurriculumId(id);
 	}
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	public Curriculum getByCurriculumName(String name) {
 		return cDAO.findByCurriculumName(name);
 	}
 
 	public void removeById(int id) {
-		try {
-			cDAO.deleteById(id);
-		} catch (IllegalArgumentException e) {
-			//logger.warn("id can't be null to deleteById()");
-		}
+		cDAO.deleteById(id);
 	}
 
 	public Curriculum update(@Valid Curriculum c) {

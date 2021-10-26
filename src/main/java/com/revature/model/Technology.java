@@ -1,5 +1,6 @@
 package com.revature.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +27,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Technology {
+public class Technology implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 948887999117032042L;
+
 	@Id
 	@Column(name = "tech_id", nullable = false, unique = true, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +44,7 @@ public class Technology {
 	private String techName;
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
+	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 
 }

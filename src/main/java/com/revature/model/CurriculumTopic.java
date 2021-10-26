@@ -1,12 +1,13 @@
 package com.revature.model;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -17,23 +18,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class CurriculumTopic {
+public class CurriculumTopic implements Serializable {
 	
 
 	    @EmbeddedId
-	    CurriculumTopicKey curriculumTopicKey;
+	    private CurriculumTopicKey curriculumTopicKey;
 
 	    @ManyToOne
-	    @MapsId("curriculum_id")
+	    @MapsId("curriculumId")
 	    @JoinColumn(name = "curriculum_id")
 		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
-	   	Curriculum curriculum;
+	    private Curriculum curriculum;
 
 	    @ManyToOne
-	    @MapsId("topic_id")
+	    @MapsId("id")
 	    @JoinColumn(name = "topic_id")
 		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
-	    Topic topic;
+	    private Topic topic;
 
 	    private int topicDay;
 	    

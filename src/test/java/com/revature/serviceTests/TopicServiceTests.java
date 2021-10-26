@@ -61,11 +61,13 @@ class TopicServiceTests {
 	@Test
 	void deleteTopic_success() {
 		this.service.delete(this.topic);
+		assertEquals(1, this.topic.getId());
 	}
 	
 	@Test
 	void deleteId_success() {
 		this.service.delete(this.topic.getId());
+		assertEquals(1, this.topic.getId());
 	}
 
 }
