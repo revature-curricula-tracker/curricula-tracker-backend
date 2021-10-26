@@ -28,12 +28,14 @@ class TopicServiceTests {
 	TopicService service;
 	
 	Topic topic;
+	Topic topic_2;
 	
 	@BeforeEach
 	void construct() {
 		MockitoAnnotations.openMocks(this);
 
 		this.topic = new Topic(1, "Test Topic", "A Topic for testing.", null, null);
+		this.topic_2 = new Topic(2, "Another Test Topic", "A Topic for testing.", null, null);
 	}
 	
 	@Test
@@ -59,6 +61,12 @@ class TopicServiceTests {
 	}
 	
 	@Test
+	void update_returnsTopic() {
+		when(this.topicDao.save(this.topic) ).thenAnswer(i -> i.getArgument(0));
+		assertEquals("update did not return the topic",this.service.update(this.topic),this.topic);
+	}
+	
+	@Test
 	void deleteTopic_success() {
 		this.service.delete(this.topic);
 		assertEquals(1, this.topic.getId());
@@ -68,6 +76,22 @@ class TopicServiceTests {
 	void deleteId_success() {
 		this.service.delete(this.topic.getId());
 		assertEquals(1, this.topic.getId());
+	}
+	
+	@Test
+	void testFindAllReturnsAllTopics() {
+		List<Topic> topics = new LinkedList<Topic>();
+		topics.add(this.topic);
+		topics.add(this.topic_2);
+
+		when(this.topicDao.save(topic)).thenReturn(topic);
+		when(this.topicDao.save(topic_2)).thenReturn(topic_2);
+		when(this.topicDao.findAll()).thenReturn(topics);
+		
+		this.topicDao.save(topic);
+		this.topicDao.save(topic_2);
+		
+		assertEquals(true, this.service.findAll().equals(topics));
 	}
 
 }
