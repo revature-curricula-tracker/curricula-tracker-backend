@@ -33,6 +33,8 @@ public class TechnologyController {
 	@GetMapping("/{id}")
 	/*
 	 * controller that calls the getByTechId method
+	 * @param id = unique id representing technology
+	 * @return = Technology with id == id
 	 */
 	public Optional<Technology> findByTechId(@PathVariable ("id") int id) {
 		return techServ.getById(id);
@@ -41,6 +43,8 @@ public class TechnologyController {
 	@GetMapping("/search/{name}")
 	/*
 	 * controller that calls the findByTechName method
+	 * @param name = name of Technology being searched for
+	 * @return = Technology with name == name
 	 */
 	public Optional<Technology> findByTechName(@PathVariable("name") String name) {
 		return techServ.getByName(name);
@@ -49,6 +53,7 @@ public class TechnologyController {
 	@GetMapping
 	/*
 	 * controller that calls the findAll method
+	 * @return = list containing all Technology in the repository
 	 */
 	public List<Technology> findAll() {
 		return techServ.findAll();
@@ -57,6 +62,8 @@ public class TechnologyController {
 	@PostMapping("/add")
 	/*
 	 * controller that calls the insert method
+	 * @param t = Technology being added to repository
+	 * @return = Technology inserted into repository
 	 */
 	public Technology insert(@Valid @RequestBody Technology t) {
 		return techServ.insertTechnology(t);
@@ -65,6 +72,8 @@ public class TechnologyController {
 	@PatchMapping("/{id}")
 	/*
 	 * controller that calls the update method
+	 * @param t = Technology being updated
+	 * @return = Technology being updated in repository
 	 */
 	public Technology update(@RequestBody Technology t) {
 		return techServ.update(t);
@@ -73,6 +82,8 @@ public class TechnologyController {
 	@DeleteMapping("/{id}")
 	/*
 	 * controller that calls the delete method
+	 * @param id = unique integer representing Technology to be deleted from repository
+	 * @return = true or false depending upon whether Technology was deleted
 	 */
 	public Boolean delete(@PathVariable int id) {
 		return techServ.deleteTechnology(id);

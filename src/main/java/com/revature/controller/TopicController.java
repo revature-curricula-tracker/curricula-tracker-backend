@@ -29,6 +29,7 @@ public class TopicController {
 	@GetMapping
 	/*
 	 * controller that calls the findAll method
+	 * @return = list containing all Topics in the repository
 	 */
 	public List<Topic> findAll() {
 		return topicService.findAll();
@@ -37,6 +38,8 @@ public class TopicController {
 	@GetMapping("/{id}")
 	/*
 	 * controller that calls the findById method
+	 * @param id = unique integer representing Topic searched for
+	 * @return = Topic from Repository with id == id
 	 */
 	public Topic getTopicById(@PathVariable("id") final int id) {
 		return topicService.findById(id);
@@ -45,6 +48,8 @@ public class TopicController {
 	@GetMapping("/search/{name}")
 	/*
 	 * controller that calls the findByName method
+	 * @param name = name of Topic being searched for
+	 * @return = Topic from repository with name == name
 	 */
 	public List<Topic> getTopicByName(@PathVariable("name") final String name) {
 		return topicService.findByName(name);
@@ -53,6 +58,8 @@ public class TopicController {
 	@PostMapping("/add")
 	/*
 	 * controller that calls the save method
+	 * @param t = Topic being added to repository
+	 * @return = Topic added to repository
 	 */
 	public Topic addTopic(@Valid @RequestBody final Topic t) {
 		return topicService.save(t);
@@ -61,6 +68,8 @@ public class TopicController {
 	@PutMapping("/{id}")
 	/*
 	 * controller that calls the update method
+	 * @param t = Topic being updated in repository
+	 * @return = updated Topic from repository
 	 */
 	public Topic updateTopic(@Valid @RequestBody final Topic t) {
 		return topicService.update(t);
@@ -69,6 +78,7 @@ public class TopicController {
 	@DeleteMapping("/{id}")
 	/*
 	 * controller that calls the delete method
+	 * @param id = unique integer signifying Topic to be deleted
 	 */
 	public void delete(@PathVariable final int id) {
 		topicService.delete(id);

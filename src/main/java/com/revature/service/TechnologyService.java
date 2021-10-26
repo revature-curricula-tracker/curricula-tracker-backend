@@ -26,6 +26,7 @@ public class TechnologyService {
 	@Transactional(readOnly = true)
 	/*
 	 * finds all technologies in the repository and returns them in a list
+	 * @return = List of all Technology in the repository
 	 */
 	public List<Technology> findAll() {
 		return tDao.findAll();
@@ -34,6 +35,8 @@ public class TechnologyService {
 	@Transactional(readOnly = true)
 	/*
 	 * finds technology based on an unique id integer and returns it as an Optional
+	 * @param id = unique integer representing Technology being searched for
+	 * @return = Technology from repository with id == id
 	 */
 	public Optional<Technology> getById(int id) {
 		return tDao.findById(id);
@@ -41,8 +44,9 @@ public class TechnologyService {
 
 	@Transactional(readOnly = true)
 	/*
-	 * finds technology based on given name and returns it as an Optional, throwing 
-	 * TechnologyNotFoundException if it does not exist in the repository
+	 * finds technology based on given name and returns it as an Optional
+	 * @param name = name of the Technology being searched for
+	 * @return = Optional of the Technology from the repository with name == name
 	 */
 	public Optional<Technology> getByName(String name) {
 		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
@@ -51,6 +55,8 @@ public class TechnologyService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	/*
 	 * inserts a given Technology into the repository
+	 * @param t = Technology being inserted into repository
+	 * @return = inserted Technology
 	 */
 	public Technology insertTechnology(Technology t) {
 		return tDao.save(t);
@@ -60,6 +66,8 @@ public class TechnologyService {
 	/*
 	 * deletes a Technology with the given id from the repository, throwing IllegalArguementException
 	 * if the id is invalid and can't be pulled
+	 * @param id = unique integer signifying Technology to be deleted
+	 * @return = true or false depending on whether or not Technology with id == id could be deleted
 	 */
 	public boolean deleteTechnology(int id) {
 		try {
@@ -78,6 +86,9 @@ public class TechnologyService {
 	/*
 	 * updates the input technology in the repository, finding it based on its id and then saving the new 
 	 * input over it, throwing IllegalArguementException if it can't
+	 * @param tech = Technology being updated to the repository
+	 * @param foundTech = Optional that determines if input Technology exists in repository
+	 * @return = updated Technology from the repository
 	 */
 	public Technology update(Technology tech) {
 
