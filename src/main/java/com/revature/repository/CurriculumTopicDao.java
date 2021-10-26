@@ -1,15 +1,11 @@
 package com.revature.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.model.Topic;
+import com.revature.model.CurriculumTopic;
 
 @Repository
-public interface TopicDao extends JpaRepository<Topic, Integer> {
-	
-	List<Topic> findByName(String name);
+public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integer> {
 
 }
