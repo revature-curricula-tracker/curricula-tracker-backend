@@ -6,11 +6,11 @@ phases:
    — REGION=us-east-1
    — AWS_ACCOUNTID=[acc id]
    — ECR_NAME=[ECR name]
-   — COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+   — COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1–7)
    — IMAGE_TAG=${COMMIT_HASH:=latest}
    — EKS_NAME=[EKS name]
    — DEPLOYMENT_NAME=[deployment name]
-   - REPOSITORY_URI=${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_NAME}
+   -REPOSITORY_URI=${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_NAME}
    - echo Logging to AWS ECR…
    — aws ecr get-login-password — region $REGION | docker login — username AWS — password-stdin ${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com
    - echo Installing necessary library…
@@ -41,6 +41,6 @@ phases:
    — echo Pushing ECR…
    — docker push $REPOSITORY_URI:latest
    — docker push $REPOSITORY_URI:$IMAGE_TAG
-   - echo Rollout new version
+- echo Rollout new version
    - echo kubectl set image deployment/$DEPLOYMENT_NAME [container name]=$REPOSITORY_URI:$IMAGE_TAG
    — “kubectl set image deployment/$DEPLOYMENT_NAME [container name]=$REPOSITORY_URI:$IMAGE_TAG”
