@@ -2,15 +2,7 @@ version: 0.2
 phases:
  install: # Install AWS cli, kubectl (needed for Helm) and Helm
   commands:
-   — echo Set parameter
-   — REGION=us-east-1
-   — AWS_ACCOUNTID=[acc id]
-   — ECR_NAME=[ECR name]
-   — COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)
-   — IMAGE_TAG=${COMMIT_HASH:=latest}
-   — EKS_NAME=[EKS name]
-   — DEPLOYMENT_NAME=[deployment name]
-   - REPOSITORY_URI=${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_NAME}
+   - REPOSITORY_URI=855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr
    - echo Logging to AWS ECR…
    - aws --version
    - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
