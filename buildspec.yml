@@ -10,6 +10,7 @@ phases:
    
  build: # Build Docker image and tag it with the commit sha
   commands:
+   - mvn clean package
    - echo Building docker image…
    - docker build . -t $REPOSITORY_URI:latest
 
@@ -17,4 +18,3 @@ phases:
   commands:
    - echo Pushing ECR…
    - docker push $REPOSITORY_URI:latest
-
