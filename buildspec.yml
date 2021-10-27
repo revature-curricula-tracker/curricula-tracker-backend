@@ -5,7 +5,7 @@ phases:
    - REPOSITORY_URI=855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr
    - echo Logging to AWS ECR…
    - aws --version
-   - aws --region us-east-1 ecr get-login-password | docker login --username AWS --password-stdin 855430746673.dkr.ecr.us-west-2.amazonaws.com
+   - aws --region us-east-1 ecr get-login-password | docker login --username AWS --password-stdin 855430746673.dkr.ecr.us-east-1.amazonaws.com
 
    
  build: # Build Docker image and tag it with the commit sha
