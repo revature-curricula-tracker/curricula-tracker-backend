@@ -6,7 +6,8 @@ phases:
    — REGION=us-east-1
    — AWS_ACCOUNTID=[acc id]
    — ECR_NAME=[ECR name]
-   — IMAGE_TAG=latest
+   — COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c1-7)
+   — IMAGE_TAG=${COMMIT_HASH:=latest}
    — EKS_NAME=[EKS name]
    — DEPLOYMENT_NAME=[deployment name]
    - REPOSITORY_URI=${AWS_ACCOUNTID}.dkr.ecr.${REGION}.amazonaws.com/${ECR_NAME}
