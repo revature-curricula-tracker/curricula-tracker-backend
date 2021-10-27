@@ -10,10 +10,11 @@ phases:
    
  build: # Build Docker image and tag it with the commit sha
   commands:
-   — echo Building docker image…
-   — docker build . -t $REPOSITORY_URI:latest
+   - echo Building docker image…
+   - docker build . -t $REPOSITORY_URI:latest
 
  post_build: # Push the Docker image to the ECR
   commands:
-   — echo Pushing ECR…
-   — docker push $REPOSITORY_URI:latest
+   - echo Pushing ECR…
+   - docker push $REPOSITORY_URI:latest
+
