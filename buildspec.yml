@@ -5,13 +5,13 @@ phases:
    - REPOSITORY_URI=855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr
    - echo Logging to AWS ECR…
    - aws --version
-   - aws --region us-east-1 ecr get-login-password | docker login --username AWS --password-stdin 855430746673.dkr.ecr.us-east-1.amazonaws.com
+   - aws --region us-east-1 ecr get-login-password | docker login --username AWS --password-stdin 855430746673.dkr.ecr.us-west-2.amazonaws.com
 
    
  build: # Build Docker image and tag it with the commit sha
   commands:
    — echo Building docker image…
-   — docker build -t $REPOSITORY_URI:latest — file Dockerfile .
+   — docker build . -t $REPOSITORY_URI:latest
    — docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
  post_build: # Push the Docker image to the ECR
   commands:
