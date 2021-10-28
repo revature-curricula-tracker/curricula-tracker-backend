@@ -5,7 +5,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,9 +17,7 @@ import com.revature.model.Curriculum;
 import com.revature.model.CurriculumTopic;
 import com.revature.model.CurriculumTopicKey;
 import com.revature.model.Topic;
-import com.revature.repository.CurriculumDao;
 import com.revature.repository.CurriculumTopicDao;
-import com.revature.service.CurriculumService;
 import com.revature.service.CurriculumTopicService;
 
 @SpringBootTest(classes= {CurriculumTopicService.class,CurriculumTopicDao.class})
