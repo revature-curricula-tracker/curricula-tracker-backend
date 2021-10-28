@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.model.Topic;
+import com.revature.repository.CurriculumTopicDao;
 import com.revature.repository.TopicDao;
 import com.revature.service.TopicService;
 
@@ -24,8 +25,12 @@ class TopicServiceTests {
 	@MockBean
 	TopicDao topicDao;
 	
+	@MockBean
+	CurriculumTopicDao ctDao;
+	
 	@InjectMocks
 	TopicService service;
+	
 	
 	Topic topic;
 	

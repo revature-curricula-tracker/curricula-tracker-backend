@@ -10,12 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Curriculum;
 import com.revature.repository.CurriculumDao;
+import com.revature.repository.CurriculumTopicDao;
 
 @Service
 public class CurriculumService {
 
 	@Autowired
 	private CurriculumDao cDAO;
+	@Autowired
+	private CurriculumTopicDao ctDAO;
 
 	public Curriculum insert(@Valid Curriculum c) {
 		return cDAO.save(c);
@@ -37,6 +40,7 @@ public class CurriculumService {
 	}
 
 	public void removeById(int id) {
+		ctDAO.deleteByCuriculumId(id);
 		cDAO.deleteById(id);
 	}
 

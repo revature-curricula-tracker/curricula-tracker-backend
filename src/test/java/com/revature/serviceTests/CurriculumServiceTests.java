@@ -15,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.model.Curriculum;
 import com.revature.repository.CurriculumDao;
+import com.revature.repository.CurriculumTopicDao;
 import com.revature.service.CurriculumService;
 
 
@@ -23,6 +24,9 @@ class CurriculumServiceTests {
 
 	@MockBean
 	CurriculumDao cDao;
+	
+	@MockBean
+	CurriculumTopicDao ctDao;
 
 	@InjectMocks
 	CurriculumService cs;
