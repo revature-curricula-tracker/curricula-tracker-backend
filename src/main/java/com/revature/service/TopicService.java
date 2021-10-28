@@ -85,16 +85,14 @@ public class TopicService {
 	 * Deletes a Topic object with specified id in the database if it exists.
 	 * @param 	id	the id of the Topic object to be deleted
 	 */
-
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final int id) {
 		this.topicDao.deleteById(id);
 	}
-
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void preDelete(final int id) {
 		this.ctDAO.deleteByTopicId(id);
-		Topic topic = findById(id);
-		topic.setTechnology(null);
-		update(topic);
+
 	}
 	
 }
