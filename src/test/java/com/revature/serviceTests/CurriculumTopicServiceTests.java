@@ -21,7 +21,7 @@ import com.revature.repository.CurriculumTopicDao;
 import com.revature.service.CurriculumTopicService;
 
 @SpringBootTest(classes= {CurriculumTopicService.class,CurriculumTopicDao.class})
-public class CurriculumTopicServiceTests {
+class CurriculumTopicServiceTests {
 	
 	@MockBean
 	CurriculumTopicDao ctDao;

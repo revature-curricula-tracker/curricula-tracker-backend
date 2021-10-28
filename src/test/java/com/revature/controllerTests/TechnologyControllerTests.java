@@ -29,7 +29,7 @@ import com.revature.model.Topic;
 import com.revature.service.TechnologyService;
 
 @WebMvcTest(TechnologyController.class)
-public class TechnologyControllerTests {
+class TechnologyControllerTests {
 	
 	static ObjectMapper objectMapper;
 
