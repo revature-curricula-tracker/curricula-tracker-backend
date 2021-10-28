@@ -52,7 +52,7 @@ public class Topic implements Serializable {
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
 }

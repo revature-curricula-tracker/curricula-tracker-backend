@@ -48,7 +48,6 @@ public class Technology implements Serializable {
 	 * contains unique name for the Technology
 	 */
 	@Length(min = 1)
-	@NotBlank
 	private String techName;
 	
 	
@@ -57,7 +56,7 @@ public class Technology implements Serializable {
 	 */
 	//@EqualsAndHashCode.Exclude
 	//@ToString.Exclude
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology")
 	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 	

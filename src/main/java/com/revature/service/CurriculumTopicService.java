@@ -27,6 +27,7 @@ public class CurriculumTopicService {
 		return ctDAO.findAll();
 	}
 	
+	@Transactional
 	public boolean removeByIds(int curriculumId, int topicId) {
 		CurriculumTopicKey id = new CurriculumTopicKey();
 		id.setCurriculumId(curriculumId);

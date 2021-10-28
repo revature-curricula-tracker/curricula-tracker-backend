@@ -29,6 +29,10 @@ public class CurriculumTopicController {
 	public CurriculumTopic insert(@Valid @RequestBody CurriculumTopic c) {
 		return ctServ.insert(c);
 	}
+	@PostMapping("/update")
+	public CurriculumTopic update(@Valid @RequestBody CurriculumTopic c) {
+		return ctServ.insert(c);
+	}
 	
 	// find all
 	@GetMapping
