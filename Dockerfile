@@ -1,4 +1,6 @@
 # Declare the base image - here is a light weight JDK 8 environment
+# In order to avoid pull rate limits from Docker, I have pushed the opnejdk:	8-jdk-alpine image into
+# AWS ECR so we can routinely pull from ECR as the Base Image
 FROM 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:openjdk8
 
 # Copy the jar produced from the mvn clean package phase from the target to the inside of the container
