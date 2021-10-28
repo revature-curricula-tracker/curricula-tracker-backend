@@ -3,6 +3,7 @@ package com.revature.model;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,12 +47,12 @@ public class Topic implements Serializable {
 	@Length(min=1, max=1000)
 	private String description;
 
-	@OneToMany(mappedBy= "topic")
+	@OneToMany(mappedBy= "topic", cascade = CascadeType.ALL)
 	@JsonIgnore//Properties(value="topic", allowSetters=true)
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
 }

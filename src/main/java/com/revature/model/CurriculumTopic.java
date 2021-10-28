@@ -22,19 +22,19 @@ public class CurriculumTopic implements Serializable {
 	
 
 	    @EmbeddedId
-	    CurriculumTopicKey curriculumTopicKey;
+	    private CurriculumTopicKey curriculumTopicKey;
 
 	    @ManyToOne
-	    @MapsId("curriculum_id")
+	    @MapsId("curriculumId")
 	    @JoinColumn(name = "curriculum_id")
 		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
-	   	Curriculum curriculum;
+	    private Curriculum curriculum;
 
 	    @ManyToOne
-	    @MapsId("topic_id")
+	    @MapsId("id")
 	    @JoinColumn(name = "topic_id")
-		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
-	    Topic topic;
+		@JsonIgnoreProperties(value={"curriculumTopics","technology"}, allowSetters=true)
+	    private Topic topic;
 
 	    private int topicDay;
 	    
