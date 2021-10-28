@@ -4,6 +4,9 @@ Link to the front end repository: https://github.com/revature-curricula-tracker/
 # Description
 Curricula Tracker is an application that will track information related to cohorts. Curricula Tracker manages and tracks the various curricula that is offered by the user of the software.
 
+# Entity Relationship Diagram:
+[<img src="https://i.imgur.com/mP1WHAr.jpg">](https://drawsql.app/p3-backend/diagrams/p3-backend/)
+
 # Technologies Used
 
 * Spring Web
