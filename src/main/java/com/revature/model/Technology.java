@@ -20,7 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "technology")
@@ -49,6 +51,8 @@ public class Technology implements Serializable {
 	 */
 	private String techName;
 	
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="technology")
 	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	/*
