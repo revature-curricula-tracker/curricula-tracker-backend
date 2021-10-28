@@ -10,7 +10,6 @@ phases:
    
  build: # generate jar with mvn, build Docker image
   commands:
-   - docker pull 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
    - mvn clean package
    - echo Building docker image…
    - docker build . -t $REPOSITORY_URI:latest
