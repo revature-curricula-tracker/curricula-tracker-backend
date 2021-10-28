@@ -47,12 +47,12 @@ public class Topic implements Serializable {
 	@Length(min=1, max=1000)
 	private String description;
 
-	@OneToMany(mappedBy= "topic", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy= "topic")
 	@JsonIgnore//Properties(value="topic", allowSetters=true)
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties(value="topics", allowSetters=true)
 	private Technology technology;
 }
