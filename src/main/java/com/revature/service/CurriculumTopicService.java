@@ -27,11 +27,22 @@ public class CurriculumTopicService {
 		return ctDAO.findAll();
 	}
 	
-	public void removeByIds(int curriculumId, int topicId) {
+	@Transactional
+	public boolean removeByIds(int curriculumId, int topicId) {
 		CurriculumTopicKey id = new CurriculumTopicKey();
 		id.setCurriculumId(curriculumId);
 		id.setTopicId(topicId);
-		ctDAO.delete(new CurriculumTopic(id, null, null, 0));
+		
+		try {
+			findByIds(curriculumId, topicId); 
+			if (findByIds(curriculumId, topicId) == null) {
+				throw new IllegalArgumentException(); 
+			}
+			ctDAO.delete(new CurriculumTopic(id, null, null, 0));
+			return true;
+		} catch (IllegalArgumentException e) {
+			return false;
+		}
 	}
 	
 	@Transactional(readOnly = true)

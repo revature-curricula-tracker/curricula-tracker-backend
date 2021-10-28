@@ -29,6 +29,10 @@ public class CurriculumTopicController {
 	public CurriculumTopic insert(@Valid @RequestBody CurriculumTopic c) {
 		return ctServ.insert(c);
 	}
+	@PostMapping("/update")
+	public CurriculumTopic update(@Valid @RequestBody CurriculumTopic c) {
+		return ctServ.insert(c);
+	}
 	
 	// find all
 	@GetMapping
@@ -43,7 +47,8 @@ public class CurriculumTopicController {
 	}
 	// delete by id
 	@DeleteMapping("/deleteByIds/{curriculumId}&{topicId}")
-	public void removeCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {
-		ctServ.removeByIds(curriculumId, topicId);
+	public boolean removeCurriculumTopicByIds(@PathVariable("curriculumId") int curriculumId, @PathVariable("topicId") int topicId ) {
+		return ctServ.removeByIds(curriculumId, topicId);
 	}
+	
 }
