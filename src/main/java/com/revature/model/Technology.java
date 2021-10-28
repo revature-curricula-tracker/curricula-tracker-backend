@@ -3,6 +3,7 @@ package com.revature.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -52,7 +53,7 @@ public class Technology implements Serializable {
 	 */
 	//@EqualsAndHashCode.Exclude
 	//@ToString.Exclude
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 	
