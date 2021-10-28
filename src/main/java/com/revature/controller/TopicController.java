@@ -53,6 +53,7 @@ public class TopicController {
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable final int id) {
+		topicService.preDelete(id);
 		topicService.delete(id);
 	}
 
