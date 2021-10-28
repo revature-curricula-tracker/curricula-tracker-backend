@@ -16,30 +16,51 @@ import com.revature.repository.TechnologyDao;
 @Service
 public class TechnologyService {
 	@Autowired
+	/*
+	 * @param tDao = TechnologyDao object to call methods directly accessing the repository
+	 * @param log = for logging what happens
+	 */
 	private TechnologyDao tDao;
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Transactional(readOnly = true)
+	/*
+	 * finds all technologies in the repository and returns them in a list
+	 */
 	public List<Technology> findAll() {
 		return tDao.findAll();
 	}
 
 	@Transactional(readOnly = true)
+	/*
+	 * finds technology based on an unique id integer and returns it as an Optional
+	 */
 	public Optional<Technology> getById(int id) {
 		return tDao.findById(id);
 	}
 
 	@Transactional(readOnly = true)
+	/*
+	 * finds technology based on given name and returns it as an Optional, throwing 
+	 * TechnologyNotFoundException if it does not exist in the repository
+	 */
 	public Optional<Technology> getByName(String name) {
 		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	/*
+	 * inserts a given Technology into the repository
+	 */
 	public Technology insertTechnology(Technology t) {
 		return tDao.save(t);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
+	/*
+	 * deletes a Technology with the given id from the repository, throwing IllegalArguementException
+	 * if the id is invalid and can't be pulled
+	 */
 	public boolean deleteTechnology(int id) {
 		try {
 			if (id < 0) {
@@ -54,6 +75,10 @@ public class TechnologyService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
+	/*
+	 * updates the input technology in the repository, finding it based on its id and then saving the new 
+	 * input over it, throwing IllegalArguementException if it can't
+	 */
 	public Technology update(Technology tech) {
 
 		try {

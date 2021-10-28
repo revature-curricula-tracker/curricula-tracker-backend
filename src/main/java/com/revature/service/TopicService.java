@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Topic;
+import com.revature.repository.CurriculumTopicDao;
 import com.revature.repository.TopicDao;
 
 @Service
@@ -16,6 +18,9 @@ public class TopicService {
 
 	@Autowired
 	private TopicDao topicDao;
+	
+	@Autowired
+	private CurriculumTopicDao ctDAO;
 	
 	/**
 	 * Returns a list of all Topics stored in the database.
@@ -81,7 +86,12 @@ public class TopicService {
 	 * @param 	id	the id of the Topic object to be deleted
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	@Modifying
 	public void delete(final int id) {
+		this.ctDAO.deleteByTopicId(id);
+		Topic temp = findById(id);
+		temp.setTechnology(null);
+		temp = update(temp);
 		this.topicDao.deleteById(id);
 	}
 	
