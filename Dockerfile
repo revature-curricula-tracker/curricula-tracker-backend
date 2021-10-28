@@ -1,5 +1,5 @@
-# Declare the base image - here is a light weight JDK 8 environment setup
-FROM 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
+# Declare the base image - here is a light weight JDK 8 environment
+FROM 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:openjdk8
 
 # Copy the jar produced from the mvn clean package phase from the target to the inside of the container
 COPY /target/curricula-tracker-backend-0.0.1-SNAPSHOT.jar curricula-tracker-backend-0.0.1-SNAPSHOT.jar
