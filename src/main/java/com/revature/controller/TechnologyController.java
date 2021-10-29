@@ -16,24 +16,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.advice.CorsFilter;
 import com.revature.model.Technology;
 import com.revature.service.TechnologyService;
 
 @RestController
 @RequestMapping("/tech")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CorsFilter.ORIGIN)
 public class TechnologyController {
 
 	@Autowired
 	public TechnologyService techServ;
 
 	@GetMapping("/{id}")
-	public Optional<Technology> findByTechId(@PathVariable ("id") int id) {
+	public Optional<Technology> findByTechId(@PathVariable ("id") final int id) {
 		return techServ.getById(id);
 	}
 
 	@GetMapping("/search/{name}")
-	public Optional<Technology> findByTechName(@PathVariable("name") String name) {
+	public Optional<Technology> findByTechName(@PathVariable("name") final String name) {
 		return techServ.getByName(name);
 	}
 
@@ -43,17 +44,17 @@ public class TechnologyController {
 	}
 
 	@PostMapping("/add")
-	public Technology insert(@Valid @RequestBody Technology t) {
+	public Technology insert(@Valid @RequestBody final Technology t) {
 		return techServ.insertTechnology(t);
 	}
 
 	@PatchMapping("/{id}")
-	public Technology update(@RequestBody Technology t) {
+	public Technology update(@RequestBody final Technology t) {
 		return techServ.update(t);
 	}
 
 	@DeleteMapping("/{id}")
-	public Boolean delete(@PathVariable int id) {
+	public Boolean delete(@PathVariable final int id) {
 		return techServ.deleteTechnology(id);
 	}
 }
