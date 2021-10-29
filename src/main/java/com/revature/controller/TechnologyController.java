@@ -21,7 +21,7 @@ import com.revature.service.TechnologyService;
 
 @RestController
 @RequestMapping("/tech")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://curricula-tracker.s3-website-us-east-1.amazonaws.com/")
 public class TechnologyController {
 
 	@Autowired

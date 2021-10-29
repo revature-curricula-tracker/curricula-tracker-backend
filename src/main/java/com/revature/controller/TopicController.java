@@ -20,7 +20,7 @@ import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://curricula-tracker.s3-website-us-east-1.amazonaws.com/")
 public class TopicController {
 
 	@Autowired

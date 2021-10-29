@@ -37,7 +37,7 @@ public class Curriculum implements Serializable {
 	private int curriculumId;
 	
 	@OneToMany(mappedBy= "curriculum", cascade = CascadeType.ALL)
-	@JsonIgnore//Properties(value="curriculum", allowSetters=true)
+	//@JsonIgnore//Properties(value="curriculum", allowSetters=true)
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	
