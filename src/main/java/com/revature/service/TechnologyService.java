@@ -15,52 +15,57 @@ import com.revature.repository.TechnologyDao;
 
 @Service
 public class TechnologyService {
+	
 	@Autowired
-	/*
-	 * @param tDao = TechnologyDao object to call methods directly accessing the repository
-	 * @param log = for logging what happens
-	 */
 	private TechnologyDao tDao;
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Transactional(readOnly = true)
-	/*
-	 * finds all technologies in the repository and returns them in a list
+	/**
+	 * Returns a list of all Technologies stored in the database.
+	 * @return		a list of all Technologies
 	 */
+	@Transactional(readOnly = true)
 	public List<Technology> findAll() {
 		return tDao.findAll();
 	}
 
-	@Transactional(readOnly = true)
-	/*
-	 * finds technology based on an unique id integer and returns it as an Optional
+	/**
+	 * Return the Technology with the specified id.
+	 * @param id	the id of the Technology
+	 * @return		the Technology object with the correlating id
 	 */
+	@Transactional(readOnly = true)
 	public Optional<Technology> getById(int id) {
 		return tDao.findById(id);
 	}
 
-	@Transactional(readOnly = true)
-	/*
-	 * finds technology based on given name and returns it as an Optional, throwing 
-	 * TechnologyNotFoundException if it does not exist in the repository
+	/**
+	 * Returns the Technology with the specified name.
+	 * @param name		the name of the Technology
+	 * @return			the Technology object with the correlating name
 	 */
+	@Transactional(readOnly = true)
 	public Optional<Technology> getByName(String name) {
 		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
 	}
 
-	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	/*
-	 * inserts a given Technology into the repository
+	/**
+	 * Saves a new Technology object in the database, and then returns the saved Technology. 
+	 * @param t		the Technology object to be saved
+	 * @return		the Technology object that was saved
 	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public Technology insertTechnology(Technology t) {
 		return tDao.save(t);
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	/*
-	 * deletes a Technology with the given id from the repository, throwing IllegalArguementException
-	 * if the id is invalid and can't be pulled
+	/**
+	 * Deletes a specified Technology object in the database if it exists and returns true.
+	 * If the Technology does not exist it will log.warn("ID can't be pulled.") and return false.
+	 * @param id	the id of the Technology object to be deleted
+	 * @return		true if the deletion is successful or false if unsuccessful
 	 */
+	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean deleteTechnology(int id) {
 		try {
 			if (id < 0) {
@@ -74,11 +79,13 @@ public class TechnologyService {
 		}
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	/*
-	 * updates the input technology in the repository, finding it based on its id and then saving the new 
-	 * input over it, throwing IllegalArguementException if it can't
+	/**
+	 * Updates a Technology object in the database, and then returns the updated Technology.
+	 * If the Technology is not present it will throw IllegalArgumentException() and log.warn("Technology can't be found, update failed."), then return null.
+	 * @param tech		The Technology to be updated in the database
+	 * @return			The Technology object that has been updated, or null if the Technology does not exist in the database
 	 */
+	@Transactional(propagation = Propagation.REQUIRED)
 	public Technology update(Technology tech) {
 
 		try {
