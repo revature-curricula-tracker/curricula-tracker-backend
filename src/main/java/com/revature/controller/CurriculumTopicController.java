@@ -51,4 +51,10 @@ public class CurriculumTopicController {
 		return ctServ.removeByIds(curriculumId, topicId);
 	}
 	
+	//find by Curriculum ID
+	@GetMapping("/findById/{curriculumId}")
+	public List<CurriculumTopic> findCurriculumTopicByCurriculumId(@PathVariable("curriculumId") int curriculumId) {
+		return ctServ.findByCurriculumId(curriculumId);
+	}
+	
 }
