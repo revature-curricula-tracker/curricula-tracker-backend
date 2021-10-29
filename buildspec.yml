@@ -1,21 +1,11 @@
 version: 0.2
+
 phases:
- install: # login to AWS ECR to connect and push image
-  commands:
-   - REPOSITORY_URI=855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr
-   - echo Logging in to AWS ECR…
-   - aws --version
-   - aws --region us-east-1 ecr get-login-password | docker login --username AWS --password-stdin 855430746673.dkr.ecr.us-east-1.amazonaws.com
-
-   
- build: # generate jar with mvn, build Docker image
-  commands:
-   - docker pull 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
-   - mvn clean package
-   - echo Building docker image…
-   - docker build . -t $REPOSITORY_URI:latest
-
- post_build: # Push the Docker image to the ECR
-  commands:
-   - echo Pushing ECR…
-   - docker push $REPOSITORY_URI:latest
+  build:
+    commands:
+      - java -version
+      - mvn clean package
+artifacts:
+  files:
+    - 'Dockerfile'
+    - target/curricula-tracker-backend-0.0.1-SNAPSHOT.jar
