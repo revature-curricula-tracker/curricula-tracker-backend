@@ -25,12 +25,11 @@ import com.revature.controller.CurriculumTopicController;
 import com.revature.model.Curriculum;
 import com.revature.model.CurriculumTopic;
 import com.revature.model.CurriculumTopicKey;
-import com.revature.model.Technology;
 import com.revature.model.Topic;
 import com.revature.service.CurriculumTopicService;
 
 @WebMvcTest(CurriculumTopicController.class)
-public class CurriculumTopicControllerTests {
+class CurriculumTopicControllerTests {
 	
 	static ObjectMapper objectMapper;
 

@@ -1,5 +1,7 @@
 package com.revature.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,11 +20,14 @@ public interface CurriculumTopicDao extends JpaRepository<CurriculumTopic, Integ
 	 @Transactional
 	 @Modifying
      @Query("DELETE FROM CurriculumTopic WHERE curriculum_id =:#{#id}")
-     void deleteByCuriculumId(@Param("id")int CurriculumId);
+     void deleteByCuriculumId(@Param("id")int curriculumId);
 	 
 	 @Transactional
 	 @Modifying
      @Query("DELETE FROM CurriculumTopic WHERE topic_id =:#{#id}") 
-     void deleteByTopicId(@Param("id")int TopicId);
+     void deleteByTopicId(@Param("id")int topicId);
+	 
+	 @Query("SELECT c FROM CurriculumTopic c WHERE curriculum_id =:#{#id}")
+     List<CurriculumTopic> findByCuriculumId(@Param("id")int curriculumId);
 	
 }

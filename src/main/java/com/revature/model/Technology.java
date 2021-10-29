@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -20,9 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "technology")
@@ -56,7 +53,7 @@ public class Technology implements Serializable {
 	 */
 	//@EqualsAndHashCode.Exclude
 	//@ToString.Exclude
-	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 	
