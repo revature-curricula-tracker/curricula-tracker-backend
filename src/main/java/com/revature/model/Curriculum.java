@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,22 +25,18 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value={"technology","curriculum"})
 public class Curriculum implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8875201762940135665L;
 
 	@Id
 	@Column(name="curriculum_id", nullable = false, unique=true, updatable=false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int curriculumId;
-	
-	@OneToMany(mappedBy= "curriculum", cascade = CascadeType.ALL)
-	@JsonIgnore//Properties(value="curriculum", allowSetters=true)
-	private Set<CurriculumTopic> curriculumTopics;
-	
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="curriculum", cascade = CascadeType.REMOVE)
+	private Set<Topic> topics;
 	
 	@Length(min = 1)
 	@NotBlank
@@ -48,14 +45,5 @@ public class Curriculum implements Serializable {
 	private int numWeeks;
 	
 	private int numDays;
-
-	@Override
-	public String toString() {
-		return "Curriculum [curriculumId=" + curriculumId + ", curriculumTopics=" + curriculumTopics
-				+ ", curriculumName=" + curriculumName + ", numWeeks=" + numWeeks + ", numDays=" + numDays + "]";
-	}
 	
-	
-	
-
 }

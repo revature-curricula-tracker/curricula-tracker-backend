@@ -10,23 +10,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.model.Curriculum;
 import com.revature.repository.CurriculumDao;
-import com.revature.repository.CurriculumTopicDao;
 
 @Service
 public class CurriculumService {
 
 	@Autowired
 	private CurriculumDao cDAO;
-	@Autowired
-	private CurriculumTopicDao ctDAO;
 
 	/**
 	 * Saves a new Curriculum object in the database, and then returns the saved Curriculum.
 	 * @param c		the Curriculum object to be saved
 	 * @return		the Curriculum object that was saved
 	 */
-	public Curriculum insert(@Valid Curriculum c) {
-		return cDAO.save(c);
+	public Curriculum insert(@Valid final Curriculum c) {
+		return this.cDAO.save(c);
 	}
 
 	/**
@@ -35,7 +32,7 @@ public class CurriculumService {
 	 */
 	@Transactional(readOnly = true)
 	public List<Curriculum> findAll() {
-		return cDAO.findAll();
+		return this.cDAO.findAll();
 	}
 
 	/**
@@ -44,8 +41,8 @@ public class CurriculumService {
 	 * @return		the Curriculum object with the correlating id
 	 */
 	@Transactional(readOnly = true)
-	public Curriculum getById(int id) {
-		return cDAO.findByCurriculumId(id);
+	public Curriculum getById(final int id) {
+		return this.cDAO.findByCurriculumId(id);
 	}
 
 	/**
@@ -54,17 +51,16 @@ public class CurriculumService {
 	 * @return			the Curriculum object with the correlating name
 	 */
 	@Transactional(readOnly = true)
-	public Curriculum getByCurriculumName(String name) {
-		return cDAO.findByCurriculumName(name);
+	public Curriculum getByCurriculumName(final String name) {
+		return this.cDAO.findByCurriculumName(name);
 	}
 
 	/**
 	 * Deletes a specified Curriculum object in the database based on the id.
 	 * @param id	the id of the Curriculum object to be deleted
 	 */
-	public void removeById(int id) {
-		ctDAO.deleteByCuriculumId(id);
-		cDAO.deleteById(id);
+	public void removeById(final int id) {
+		this.cDAO.deleteById(id);
 	}
 
 	/**
@@ -72,8 +68,8 @@ public class CurriculumService {
 	 * @param c		The Curriculum to be updated in the database
 	 * @return		The Technology object that has been updated
 	 */
-	public Curriculum update(@Valid Curriculum c) {
-		return cDAO.save(c);
+	public Curriculum update(@Valid final Curriculum c) {
+		return this.cDAO.save(c);
 	}
 
 }

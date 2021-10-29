@@ -26,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value={"technology","curriculum"})
 public class Technology implements Serializable {
 	
 	/**
@@ -54,7 +55,6 @@ public class Technology implements Serializable {
 	//@EqualsAndHashCode.Exclude
 	//@ToString.Exclude
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties(value="technology", allowSetters=true)
 	private List<Topic> topics;
 	
 	/*

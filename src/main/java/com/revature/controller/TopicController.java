@@ -28,33 +28,32 @@ public class TopicController {
 
 	@GetMapping
 	public List<Topic> findAll() {
-		return topicService.findAll();
+		return this.topicService.findAll();
 	}
 
 	@GetMapping("/{id}")
 	public Topic getTopicById(@PathVariable("id") final int id) {
-		return topicService.findById(id);
+		return this.topicService.findById(id);
 	}
 
 	@GetMapping("/search/{name}")
 	public List<Topic> getTopicByName(@PathVariable("name") final String name) {
-		return topicService.findByName(name);
+		return this.topicService.findByName(name);
 	}
 
 	@PostMapping("/add")
 	public Topic addTopic(@Valid @RequestBody final Topic t) {
-		return topicService.save(t);
+		return this.topicService.save(t);
 	}
 
 	@PutMapping("/{id}")
 	public Topic updateTopic(@Valid @RequestBody final Topic t) {
-		return topicService.update(t);
+		return this.topicService.update(t);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable final int id) {
-		topicService.preDelete(id);
-		topicService.delete(id);
+		this.topicService.delete(id);
 	}
 
 }
