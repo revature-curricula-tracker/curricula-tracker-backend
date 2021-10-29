@@ -52,4 +52,8 @@ public class CurriculumTopicService {
 		id.setTopicId(topicId);
 		return ctDAO.findByCurriculumTopicKey(id);
 	}
+	
+	public List<CurriculumTopic> findByCurriculumId(int id){
+		return ctDAO.findByCuriculumId(id);
+	}
 }

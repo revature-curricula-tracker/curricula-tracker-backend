@@ -69,6 +69,15 @@ class CurriculumTopicControllerTests {
 	}
 	
 	@Test
+	void update_returnsCt() throws Exception {
+		when(this.ctserv.insert(this.ct)).thenReturn(this.ct);
+		
+		this.mvc.perform(post( PATH + "update" ).content(this.ctJson).contentType(MediaType.APPLICATION_JSON) )
+			.andExpect( status().isOk() )
+			.andExpect( content().json(this.ctJson) );
+	}
+	
+	@Test
 	void TestFindAllCurriculumTopics() throws Exception {
 		List<CurriculumTopic> cts = new ArrayList<>();
 		cts.add(ct);
@@ -81,7 +90,7 @@ class CurriculumTopicControllerTests {
 	}
 	
 	@Test
-	void testGetByIds() throws Exception {
+	void testFindByIds() throws Exception {
 		when(this.ctserv.findByIds(1, 1)).thenReturn(this.ct);
 		
 		this.mvc.perform(get( PATH + "findByIds/1&1" ).content(this.ctJson).contentType(MediaType.APPLICATION_JSON) )
@@ -97,6 +106,18 @@ class CurriculumTopicControllerTests {
 		this.mvc.perform(delete( PATH + "deleteByIds/1&1" ).content(this.ctJson).contentType(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().string("true") );
+	}
+	
+	@Test
+	void testFindById() throws Exception {
+		List<CurriculumTopic> cts = new ArrayList<>();
+		cts.add(ct);
+		when(this.ctserv.findByCurriculumId(1)).thenReturn(cts);
+		String ctsJson = objectMapper.writeValueAsString(cts);
+		
+		this.mvc.perform(get( PATH + "findById/1" ).content(ctsJson).contentType(MediaType.APPLICATION_JSON) )
+			.andExpect( status().isOk() )
+			.andExpect( content().json(ctsJson) );
 	}
 	
 	
