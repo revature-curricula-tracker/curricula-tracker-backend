@@ -33,26 +33,26 @@ To install and deploy...
 # Usage
 
 * All curriculum end points are available at /curriculum/...
-  - /add : insert a curriculum by sending a curriculum object in the body of a post request
-  - / : finds all curricula and returns a list
-  - /findId/<id> : finds a specific curricula by its id number in the path variable
-  - /findName/<name> : finds a specific curricula by name as a path variable
-  - /update : updates a curricula object from a post request body
-  - /deleteById/<id> : deletes a curricula by its id as a path variable
+  - POST /add : insert a curricula by sending a curriculum object in the body of a post request
+  - GET / : finds all curricula and returns a list
+  - GET /findId/{id} : finds a specific curricula by its id number in the path variable
+  - GET /findName/{name} : finds a specific curricula by name as a path variable
+  - POST /update : updates a curricula object from a post request body
+  - DELETE /deleteById/{id} : deletes a curricula by its id as a path variable
 * All topic end points are available at /topics/...
-  - /add : inserts a topic by taking an object in the body of a post request
-  - / : finds all topics returned as a list
-  - /<id> : finds a specific topic by its id as a path variable
-  - /search/<name> : finds a topic by name as a path variable
-  - /<id> : updates a topic by taking its id as a path variable and topic object in the body of a put request
-  - /<id> : delete a topic by id by sending a delete request with id as a path variable
+  - POST /add : inserts a topic by taking an object in the body of a post request
+  - GET / : finds all topics returned as a list
+  - GET /{id} : finds a specific topic by its id as a path variable
+  - GET /search/{name} : finds a topic by name as a path variable
+  - PUT /{id} : updates a topic by taking its id as a path variable and topic object in the body of a put request
+  - DELETE /{id} : delete a topic by id by sending a delete request with id as a path variable
 * All technology end points are available at /tech/...
-  - /add : inserts a technology object from the body of a post request
-  - / : finds all technologies returned as a list
-  - /<id> : finds a specific technology by its id in a path variable
-  - /search/<name> : finds a technology by taking its name as a path variable
-  - /<id> : update a technology by sending a patch request with id in the path and object the body
-  - /<id> : delete a technology by sending a delete request with the id as a path varible
+  - POST /add : inserts a technology object from the body of a post request
+  - GET / : finds all technologies returned as a list
+  - GET /{id} : finds a specific technology by its id in a path variable
+  - GET /search/{name} : finds a technology by taking its name as a path variable
+  - PATCH /{id} : update a technology by sending a patch request with id in the path and object the body
+  - DELETE /{id} : delete a technology by sending a delete request with the id as a path variable
 
 # Contributors
 Teams were divided into threes to pilot construction of the three major entities used in this sprint.
