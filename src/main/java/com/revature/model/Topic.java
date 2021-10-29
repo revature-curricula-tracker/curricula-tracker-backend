@@ -48,7 +48,7 @@ public class Topic implements Serializable {
 	private String description;
 
 	@OneToMany(mappedBy= "topic")
-	@JsonIgnoreProperties(value="topic", allowSetters=true)
+	@JsonIgnore//Properties(value="topic", allowSetters=true)
 	private Set<CurriculumTopic> curriculumTopics;
 	
 	@JoinColumn()
