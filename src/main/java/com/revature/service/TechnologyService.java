@@ -83,7 +83,7 @@ public class TechnologyService {
 	 * Updates a Technology object in the database, and then returns the updated Technology.
 	 * If the Technology is not present it will throw IllegalArgumentException() and log.warn("Technology can't be found, update failed."), then return null.
 	 * @param tech		The Technology to be updated in the database
-	 * @return			The Technology object that is updated, or null if the Technology does not exist in the database
+	 * @return			The Technology object that has been updated, or null if the Technology does not exist in the database
 	 */
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Technology update(Technology tech) {
