@@ -8,7 +8,8 @@ FROM openjdk:8-jdk-alpine
 COPY /target/curricula-tracker-backend-0.0.1-SNAPSHOT.jar curricula-tracker-backend-0.0.1-SNAPSHOT.jar
 
 # Expose port 8080
-EXPOSE 8080
+# EXPOSE 8080
+EXPOSE 5000
 
 # Run the JAR when you run the container, thus executing the app
 ENTRYPOINT ["java", "-jar", "/curricula-tracker-backend-0.0.1-SNAPSHOT.jar"]
