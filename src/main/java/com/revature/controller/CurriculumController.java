@@ -27,6 +27,7 @@ public class CurriculumController {
 
 	@PostMapping("/add")
 	public Curriculum insert(@Valid @RequestBody final Curriculum c) {
+		System.out.println("\n\ntest\n\n");
 		return this.cserv.insert(c);
 	}
 
