@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Curriculum;
+import com.revature.model.json.CurriculumJson;
 import com.revature.service.CurriculumService;
 
 @RestController
@@ -26,40 +28,41 @@ public class CurriculumController {
 	private CurriculumService cserv;
 
 	@PostMapping("/add")
-	public Curriculum insert(@Valid @RequestBody Curriculum c) {
-		return cserv.insert(c);
+	public CurriculumJson insert(@Valid @RequestBody final Curriculum c) {
+		return new CurriculumJson( this.cserv.insert(c) );
 	}
 
 	// find all
 	@GetMapping
-	public List<Curriculum> findAll() {
-		return cserv.findAll();
+	public List<CurriculumJson> findAll() {
+		final List<CurriculumJson> out = new LinkedList<>();
+		for(final Curriculum cir: this.cserv.findAll())
+			out.add(new CurriculumJson(cir));
+		return out;
 	}
 
 	// find by name
 	@GetMapping("/findId/{id}")
-	public Curriculum findById(@PathVariable("id") int id) {
-		return cserv.getById(id);
+	public CurriculumJson findById(@PathVariable("id") final int id) {
+		return new CurriculumJson( this.cserv.getById(id) );
 	}
 
 	// find by name
 	@GetMapping("/findName/{name}")
-	public Curriculum findByName(@PathVariable("name") String name) {
-		return cserv.getByCurriculumName(name);
+	public CurriculumJson findByName(@PathVariable("name") final String name) {
+		return new CurriculumJson( this.cserv.getByCurriculumName(name) );
 	}
 
 	// update by id
 	@PostMapping("/update")
-	public Curriculum updateById(@Valid @RequestBody Curriculum c) {
-		return cserv.update(c);
+	public CurriculumJson updateById(@Valid @RequestBody final Curriculum c) {
+		return new CurriculumJson( this.cserv.update(c) );
 	}
 
 	// delete by id
 	@DeleteMapping("/deleteById/{id}")
-	public void removeCurriculumById(@PathVariable("id") int id) {
-		
-		
-		cserv.removeById(id);
+	public void removeCurriculumById(@PathVariable("id") final int id) {
+		this.cserv.removeById(id);
 	}
 
 }
