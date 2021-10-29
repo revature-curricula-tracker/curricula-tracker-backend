@@ -27,13 +27,13 @@ public class CurriculumTopic implements Serializable {
 	    @ManyToOne
 	    @MapsId("curriculumId")
 	    @JoinColumn(name = "curriculum_id")
-		//@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
+		@JsonIgnoreProperties(value="curriculumTopics", allowSetters=true)
 	    private Curriculum curriculum;
 
 	    @ManyToOne
 	    @MapsId("topicId")
 	    @JoinColumn(name = "topic_id")
-		//@JsonIgnoreProperties(value={"curriculumTopics"}, allowSetters=true)
+		@JsonIgnoreProperties(value={"curriculumTopics"}, allowSetters=true)
 	    private Topic topic;
 
 	    private int topicDay;

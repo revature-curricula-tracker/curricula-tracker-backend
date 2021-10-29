@@ -52,10 +52,10 @@ public class Technology implements Serializable {
 	 * contains a list with all Topics included in the Technology
 	 */
 	//@EqualsAndHashCode.Exclude
-//	//@ToString.Exclude
-//	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology", cascade = CascadeType.REMOVE)
-//	@JsonIgnoreProperties(value="technology", allowSetters=true)
-//	private List<Topic> topics;
+	//@ToString.Exclude
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="technology", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties(value="technology", allowSetters=true)
+	private List<Topic> topics;
 	
 	/*
 	 * the color of the Technology
