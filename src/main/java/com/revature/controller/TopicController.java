@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.advice.CorsFilter;
 import com.revature.model.Topic;
 import com.revature.model.json.SendTopicJson;
 import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CorsFilter.ORIGIN)
 public class TopicController {
 
 	@Autowired

@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.advice.CorsFilter;
 import com.revature.model.Curriculum;
 import com.revature.service.CurriculumService;
 
 @RestController
 @RequestMapping("/curriculum")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CorsFilter.ORIGIN)
 public class CurriculumController {
 
 	@Autowired
@@ -27,7 +28,6 @@ public class CurriculumController {
 
 	@PostMapping("/add")
 	public Curriculum insert(@Valid @RequestBody final Curriculum c) {
-		System.out.println("\n\ntest\n\n");
 		return this.cserv.insert(c);
 	}
 
@@ -58,8 +58,6 @@ public class CurriculumController {
 	// delete by id
 	@DeleteMapping("/deleteById/{id}")
 	public void removeCurriculumById(@PathVariable("id") final int id) {
-		
-		
 		this.cserv.removeById(id);
 	}
 
