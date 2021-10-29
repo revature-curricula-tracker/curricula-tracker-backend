@@ -59,6 +59,15 @@ class CurriculumTopicServiceTests {
 	}
 	
 	@Test
+	void findByCurriculumId_Test() {
+		List<CurriculumTopic> cts = new ArrayList<CurriculumTopic>();
+		cts.add(ct);
+		
+		when(this.ctDao.findByCuriculumId(1)).thenReturn(cts);
+		assertEquals(cts, ctserv.findByCurriculumId(1));
+	}
+	
+	@Test
 	void findByIds_Test() {
 		when(this.ctDao.findByCurriculumTopicKey(id)).thenReturn(ct);
 		assertEquals(ct, ctDao.findByCurriculumTopicKey(id));
