@@ -51,7 +51,7 @@ class TopicControllerTests {
 
 	@BeforeEach
 	void construct() throws JsonProcessingException {
-		this.topic = new Topic(1, "Test Topic", "A Topic for testing.", null, null);
+		this.topic = new Topic(1, 1, "Test Topic", "A Topic for testing.", null, null);
 		this.topicJson = objectMapper.writeValueAsString(this.topic);
 		
 		this.topicList = new LinkedList<Topic>();

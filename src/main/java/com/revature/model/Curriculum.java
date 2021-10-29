@@ -1,7 +1,7 @@
 package com.revature.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,8 +15,6 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +23,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(value={"technology","curriculum"})
 public class Curriculum implements Serializable {
 	
 	private static final long serialVersionUID = -8875201762940135665L;
@@ -36,7 +33,7 @@ public class Curriculum implements Serializable {
 	private int curriculumId;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="curriculum", cascade = CascadeType.REMOVE)
-	private Set<Topic> topics;
+	private List<Topic> topics;
 	
 	@Length(min = 1)
 	@NotBlank

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +34,8 @@ public class Topic implements Serializable {
 	@Column(nullable = false, unique = true, updatable = false)
 	private int id;
 	
+	int topicDay;
+	
 	@Length(min=1)
 	private String name;
 	
@@ -40,10 +44,11 @@ public class Topic implements Serializable {
 	
 	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
-	//TODO: remove infinite loop
+	@JsonBackReference
 	private Technology technology;
 	
 	@JoinColumn()
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
 	private Curriculum curriculum;
 }

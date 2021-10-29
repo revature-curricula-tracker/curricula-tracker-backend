@@ -72,7 +72,7 @@ class CurriculumControllerTests {
 	}
 	@Test
 	void TestFindAllCurriculum() throws Exception {
-		List<Curriculum> curricula = new ArrayList<>();
+		final List<Curriculum> curricula = new ArrayList<>();
 		curricula.add(curriculum);
 		when(this.service.findAll()).thenReturn(curricula);
 		

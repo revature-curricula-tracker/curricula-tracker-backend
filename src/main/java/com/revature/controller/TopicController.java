@@ -1,5 +1,6 @@
 package com.revature.controller;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.model.Topic;
+import com.revature.model.json.SendTopicJson;
 import com.revature.service.TopicService;
 
 @RestController
@@ -27,28 +29,37 @@ public class TopicController {
 	TopicService topicService;
 
 	@GetMapping
-	public List<Topic> findAll() {
-		return this.topicService.findAll();
+	public List<SendTopicJson> findAll() {
+		final List<SendTopicJson> list = new LinkedList<>();
+		for(final Topic topic: this.topicService.findAll())
+			list.add(new SendTopicJson(topic));
+		return list;
 	}
 
 	@GetMapping("/{id}")
-	public Topic getTopicById(@PathVariable("id") final int id) {
-		return this.topicService.findById(id);
+	public SendTopicJson getTopicById(@PathVariable("id") final int id) {
+		final Topic topic = this.topicService.findById(id);
+		return topic == null ? null : new SendTopicJson( topic );
 	}
 
 	@GetMapping("/search/{name}")
-	public List<Topic> getTopicByName(@PathVariable("name") final String name) {
-		return this.topicService.findByName(name);
+	public List<SendTopicJson> getTopicByName(@PathVariable("name") final String name) {
+		final List<SendTopicJson> list = new LinkedList<>();
+		for(final Topic topic: this.topicService.findByName(name))
+			list.add(new SendTopicJson(topic));
+		return list;
 	}
 
 	@PostMapping("/add")
-	public Topic addTopic(@Valid @RequestBody final Topic t) {
-		return this.topicService.save(t);
+	public SendTopicJson addTopic(@Valid @RequestBody final Topic t) {
+		final Topic topic = this.topicService.save(t);
+		return topic == null ? null : new SendTopicJson( topic );
 	}
 
 	@PutMapping("/{id}")
-	public Topic updateTopic(@Valid @RequestBody final Topic t) {
-		return this.topicService.update(t);
+	public SendTopicJson updateTopic(@Valid @RequestBody final Topic t) {
+		final Topic topic = this.topicService.update(t);
+		return topic == null ? null : new SendTopicJson( topic );
 	}
 
 	@DeleteMapping("/{id}")
