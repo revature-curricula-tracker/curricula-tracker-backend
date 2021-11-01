@@ -72,8 +72,8 @@ public class TopicController {
 	}
 
 	@PutMapping("/byname/{name}")
-	public List<SendTopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
-		final List<SendTopicJson> list = new LinkedList<>();
+	public List<TopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
+		final List<TopicJson> list = new LinkedList<>();
 		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
 			list.add(new SendTopicJson(topic));
 		return list;
