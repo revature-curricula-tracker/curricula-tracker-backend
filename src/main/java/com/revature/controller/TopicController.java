@@ -23,7 +23,7 @@ import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
-@CrossOrigin(origins = CorsFilter.ORIGIN)
+@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.LOCALHOST})
 public class TopicController {
 
 	@Autowired
