@@ -11,14 +11,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.revature.model.json.SendTopicJson;
+import com.revature.model.json.TopicJson;
 
-@SpringBootTest(classes=SendTopicJson.class)
+@SpringBootTest(classes=TopicJson.class)
 class SendTopicJsonTests {
 	// One big test
     @Test
     void testBean() {
-        assertThat(SendTopicJson.class, allOf(
+        assertThat(TopicJson.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
                 hasValidBeanHashCode(),
@@ -31,26 +31,26 @@ class SendTopicJsonTests {
 
     @Test
     void shouldHaveANoArgsConstructor() {
-        assertThat(SendTopicJson.class, hasValidBeanConstructor());
+        assertThat(TopicJson.class, hasValidBeanConstructor());
     }
 
     @Test
     void gettersAndSettersShouldWorkForEachProperty() {
-        assertThat(SendTopicJson.class, hasValidGettersAndSetters());
+        assertThat(TopicJson.class, hasValidGettersAndSetters());
     }
 
     @Test
     void allPropertiesShouldInfluenceHashCode() {
-        assertThat(SendTopicJson.class, hasValidBeanHashCode());
+        assertThat(TopicJson.class, hasValidBeanHashCode());
     }
 
     @Test
     void allPropertiesShouldBeComparedDuringEquals() {
-        assertThat(SendTopicJson.class, hasValidBeanEquals());
+        assertThat(TopicJson.class, hasValidBeanEquals());
     }
 
     @Test
     void allPropertiesShouldBeRepresentedInToStringOutput() {
-        assertThat(SendTopicJson.class, hasValidBeanToString());
+        assertThat(TopicJson.class, hasValidBeanToString());
     }
 }
