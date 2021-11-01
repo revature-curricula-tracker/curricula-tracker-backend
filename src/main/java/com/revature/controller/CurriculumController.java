@@ -20,7 +20,7 @@ import com.revature.service.CurriculumService;
 
 @RestController
 @RequestMapping("/curriculum")
-@CrossOrigin(origins = CorsFilter.ORIGIN)
+@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.LOCALHOST})
 public class CurriculumController {
 
 	@Autowired
