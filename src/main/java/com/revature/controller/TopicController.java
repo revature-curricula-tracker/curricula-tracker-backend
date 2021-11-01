@@ -63,9 +63,22 @@ public class TopicController {
 		return topic == null ? null : new SendTopicJson( topic );
 	}
 
+	@PutMapping("/byname/{name}")
+	public List<SendTopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
+		final List<SendTopicJson> list = new LinkedList<>();
+		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
+			list.add(new SendTopicJson(topic));
+		return list;
+	}
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable final int id) {
 		this.topicService.delete(id);
+	}
+
+	@DeleteMapping("/byname/{name}")
+	public void deleteTopicsByName(@PathVariable final String name) {
+		this.topicService.deleteByName(name.replace('_',' '));
 	}
 
 }
