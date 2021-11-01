@@ -15,7 +15,9 @@ phases:
    
  build: # generate jar with mvn, build Docker image
   commands:
+   # Generate the JAR with the new source code
    - mvn clean package
+   # Build the Docker image and tag it with the ECR name so we can push it there
    - echo Building docker image…
    - docker build . -t $REPOSITORY_URI:latest
 
