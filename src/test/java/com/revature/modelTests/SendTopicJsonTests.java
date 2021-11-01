@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.revature.model.json.SendTopicJson;
 
 @SpringBootTest(classes=SendTopicJson.class)
-public class SendTopicJsonTests {
+class SendTopicJsonTests {
 	// One big test
     @Test
     void testBean() {
