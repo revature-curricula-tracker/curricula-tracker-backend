@@ -1,0 +1,13 @@
+# This is the version of Docker Compose we're using https://docs.docker.com/compose/compose-file/
+version: "3.8"
+services:
+  # Accounts is the first service we want to run
+  curriculat-tracker-service:
+    image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
+    mem_limit: 700m
+    ports:
+      - "5000:5000"
+    networks:
+      - curricula-tracker
+networks:
+  bank-network:
