@@ -75,7 +75,7 @@ public class TopicController {
 	public List<TopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
 		final List<TopicJson> list = new LinkedList<>();
 		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
-			list.add(new SendTopicJson(topic));
+			list.add(new TopicJson(topic));
 		return list;
 	}
 
