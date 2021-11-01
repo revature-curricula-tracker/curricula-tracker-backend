@@ -107,10 +107,27 @@ class TopicControllerTests {
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}
+
+	@Test
+	void updateTopicByName_returnsTopics() throws Exception {
+		when(this.service.updateByName(this.topic.getName(),this.topic)).thenReturn(this.topicList);
+		
+		this.mvc.perform(put( PATH + "byname/" + this.topic.getName())
+			.content(this.topicJson)
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect( status().isOk() )
+			.andExpect( content().json(this.listJson) );
+	}
 	
 	@Test
 	void deleteTopic_success() throws Exception {
 		this.mvc.perform(delete( PATH + this.topic.getId() ))
+			.andExpect( status().isOk() );
+	}
+	
+	@Test
+	void deleteTopicByName_success() throws Exception {
+		this.mvc.perform(delete( PATH + "byname/" + this.topic.getName() ))
 			.andExpect( status().isOk() );
 	}
 	
