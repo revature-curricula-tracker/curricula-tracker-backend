@@ -10,4 +10,4 @@ services:
     networks:
       - curricula-tracker
 networks:
-  bank-network:
+  curricula-tracker:
