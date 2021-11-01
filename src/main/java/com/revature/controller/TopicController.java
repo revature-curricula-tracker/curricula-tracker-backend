@@ -71,14 +71,6 @@ public class TopicController {
 		return list;
 	}
 
-	@PutMapping("/byname/{name}")
-	public List<TopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
-		final List<TopicJson> list = new LinkedList<>();
-		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
-			list.add(new TopicJson(topic));
-		return list;
-	}
-
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable final int id) {
 		this.topicService.delete(id);
