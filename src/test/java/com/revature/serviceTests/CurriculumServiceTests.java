@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.model.Curriculum;
 import com.revature.repository.CurriculumDao;
-import com.revature.repository.CurriculumTopicDao;
 import com.revature.service.CurriculumService;
 
 
@@ -24,9 +23,6 @@ class CurriculumServiceTests {
 
 	@MockBean
 	CurriculumDao cDao;
-	
-	@MockBean
-	CurriculumTopicDao ctDao;
 
 	@InjectMocks
 	CurriculumService cs;
@@ -72,7 +68,7 @@ class CurriculumServiceTests {
 
 	@Test
 	void findAll_Test() {
-		List<Curriculum> curricula = this.cs.findAll();
+		final List<Curriculum> curricula = this.cs.findAll();
 		assertEquals(true, curricula.isEmpty());
 	}
 

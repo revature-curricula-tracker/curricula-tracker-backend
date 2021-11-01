@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.revature.model.Topic;
-import com.revature.repository.CurriculumTopicDao;
 import com.revature.repository.TopicDao;
 import com.revature.service.TopicService;
 
@@ -24,9 +23,6 @@ class TopicServiceTests {
 	
 	@MockBean
 	TopicDao topicDao;
-	
-	@MockBean
-	CurriculumTopicDao ctDao;
 	
 	@InjectMocks
 	TopicService service;
@@ -39,8 +35,8 @@ class TopicServiceTests {
 	void construct() {
 		MockitoAnnotations.openMocks(this);
 
-		this.topic = new Topic(1, "Test Topic", "A Topic for testing.", null, null);
-		this.topic_2 = new Topic(2, "Another Test Topic", "A Topic for testing.", null, null);
+		this.topic = new Topic(1, 1, "Test Topic", "A Topic for testing.", null, null);
+		this.topic_2 = new Topic(2, 1, "Another Test Topic", "A Topic for testing.", null, null);
 	}
 	
 	@Test
@@ -85,7 +81,7 @@ class TopicServiceTests {
 	
 	@Test
 	void testFindAllReturnsAllTopics() {
-		List<Topic> topics = new LinkedList<Topic>();
+		final List<Topic> topics = new LinkedList<Topic>();
 		topics.add(this.topic);
 		topics.add(this.topic_2);
 
