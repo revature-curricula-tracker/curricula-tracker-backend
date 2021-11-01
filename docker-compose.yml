@@ -36,7 +36,7 @@ services:
     networks:
      - curricula-tracker
      
-  curriculat-tracker-service:
+  curricula-tracker-service:
     image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
     mem_limit: 700m
     ports:
