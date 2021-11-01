@@ -64,7 +64,7 @@ public class TopicService {
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public List<Topic> updateByName(final String name, final Topic topic) {
-		this.topicDao.updateByName(name, topic.getName(), topic.getDescription(), topic.getTopicDay());
+		this.topicDao.updateByName(name, topic.getName(), topic.getDescription());
 		return this.topicDao.findByName(name);
 	}
 	
