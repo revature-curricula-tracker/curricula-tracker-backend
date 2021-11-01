@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.advice.CorsFilter;
 import com.revature.model.Topic;
-import com.revature.model.json.SendTopicJson;
+import com.revature.model.json.TopicJson;
 import com.revature.service.TopicService;
 
 @RestController
@@ -30,37 +30,45 @@ public class TopicController {
 	TopicService topicService;
 
 	@GetMapping
-	public List<SendTopicJson> findAll() {
-		final List<SendTopicJson> list = new LinkedList<>();
+	public List<TopicJson> findAll() {
+		final List<TopicJson> list = new LinkedList<>();
 		for(final Topic topic: this.topicService.findAll())
-			list.add(new SendTopicJson(topic));
+			list.add(new TopicJson(topic));
 		return list;
 	}
 
 	@GetMapping("/{id}")
-	public SendTopicJson getTopicById(@PathVariable("id") final int id) {
+	public TopicJson getTopicById(@PathVariable("id") final int id) {
 		final Topic topic = this.topicService.findById(id);
-		return topic == null ? null : new SendTopicJson( topic );
+		return topic == null ? null : new TopicJson( topic );
 	}
 
 	@GetMapping("/search/{name}")
-	public List<SendTopicJson> getTopicByName(@PathVariable("name") final String name) {
-		final List<SendTopicJson> list = new LinkedList<>();
+	public List<TopicJson> getTopicByName(@PathVariable("name") final String name) {
+		final List<TopicJson> list = new LinkedList<>();
 		for(final Topic topic: this.topicService.findByName(name))
-			list.add(new SendTopicJson(topic));
+			list.add(new TopicJson(topic));
 		return list;
 	}
 
 	@PostMapping("/add")
-	public SendTopicJson addTopic(@Valid @RequestBody final Topic t) {
-		final Topic topic = this.topicService.save(t);
-		return topic == null ? null : new SendTopicJson( topic );
+	public TopicJson addTopic(@Valid @RequestBody final TopicJson topicJson) {
+		final Topic topic = this.topicService.save(topicJson.constructTopic());
+		return topic == null ? null : new TopicJson( topic );
 	}
 
 	@PutMapping("/{id}")
-	public SendTopicJson updateTopic(@Valid @RequestBody final Topic t) {
-		final Topic topic = this.topicService.update(t);
-		return topic == null ? null : new SendTopicJson( topic );
+	public TopicJson updateTopic(@Valid @RequestBody final TopicJson topicJson) {
+		final Topic topic = this.topicService.update(topicJson.constructTopic());
+		return topic == null ? null : new TopicJson( topic );
+	}
+
+	@PutMapping("/byname/{name}")
+	public List<TopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
+		final List<TopicJson> list = new LinkedList<>();
+		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
+			list.add(new TopicJson(topic));
+		return list;
 	}
 
 	@PutMapping("/byname/{name}")
