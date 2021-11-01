@@ -23,7 +23,7 @@ import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
-@CrossOrigin(origins = CorsFilter.ORIGIN)
+@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.LOCALHOST})
 public class TopicController {
 
 	@Autowired
@@ -68,6 +68,14 @@ public class TopicController {
 		final List<TopicJson> list = new LinkedList<>();
 		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
 			list.add(new TopicJson(topic));
+		return list;
+	}
+
+	@PutMapping("/byname/{name}")
+	public List<SendTopicJson> updateTopicsByName(@PathVariable final String name, @Valid @RequestBody final Topic t) {
+		final List<SendTopicJson> list = new LinkedList<>();
+		for(final Topic topic: this.topicService.updateByName( name.replace('_', ' '), t ))
+			list.add(new SendTopicJson(topic));
 		return list;
 	}
 
