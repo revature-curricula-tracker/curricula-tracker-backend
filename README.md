@@ -22,6 +22,7 @@ Curricula Tracker is an application that will track information related to cohor
 * AWS CodePipeline
 * AWS S3 Bucket
 * Docker
+* Angular
 
 # Features
 
