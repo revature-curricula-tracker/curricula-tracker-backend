@@ -26,7 +26,7 @@ public class TechnologyService {
 	 */
 	@Transactional(readOnly = true)
 	public List<Technology> findAll() {
-		return tDao.findAll();
+		return this.tDao.findAll();
 	}
 
 	/**
@@ -35,8 +35,8 @@ public class TechnologyService {
 	 * @return		the Technology object with the correlating id
 	 */
 	@Transactional(readOnly = true)
-	public Optional<Technology> getById(int id) {
-		return tDao.findById(id);
+	public Optional<Technology> getById(final int id) {
+		return this.tDao.findById(id);
 	}
 
 	/**
@@ -45,8 +45,8 @@ public class TechnologyService {
 	 * @return			the Technology object with the correlating name
 	 */
 	@Transactional(readOnly = true)
-	public Optional<Technology> getByName(String name) {
-		return tDao.getByTechName(name).isPresent() ? tDao.getByTechName(name) : Optional.empty();
+	public Optional<Technology> getByName(final String name) {
+		return this.tDao.getByTechName(name).isPresent() ? this.tDao.getByTechName(name) : Optional.empty();
 	}
 
 	/**
@@ -55,8 +55,8 @@ public class TechnologyService {
 	 * @return		the Technology object that was saved
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public Technology insertTechnology(Technology t) {
-		return tDao.save(t);
+	public Technology insertTechnology(final Technology t) {
+		return this.tDao.save(t);
 	}
 
 	/**
@@ -66,15 +66,15 @@ public class TechnologyService {
 	 * @return		true if the deletion is successful or false if unsuccessful
 	 */
 	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean deleteTechnology(int id) {
+	public boolean deleteTechnology(final int id) {
 		try {
 			if (id < 0) {
 				throw new IllegalArgumentException("TechId cannot be less than 0");
 			}
-			tDao.deleteById(id);
+			this.tDao.deleteById(id);
 			return true;
-		} catch (IllegalArgumentException e) {
-			log.warn("ID can't be pulled.");
+		} catch (final IllegalArgumentException e) {
+			this.log.warn("ID can't be pulled.");
 			return false;
 		}
 	}
@@ -86,23 +86,23 @@ public class TechnologyService {
 	 * @return			The Technology object that has been updated, or null if the Technology does not exist in the database
 	 */
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Technology update(Technology tech) {
+	public Technology update(final Technology tech) {
 
 		try {
 
-			Optional<Technology> foundTech = tDao.findById(tech.getTechId());
+			final Optional<Technology> foundTech = this.tDao.findById(tech.getTechId());
 			if (foundTech.isPresent()) {
-				return tDao.save(tech);
+				return this.tDao.save(tech);
 			} else {
 				throw new IllegalArgumentException();
 			}
 		}
 
-		catch (IllegalArgumentException e)
+		catch (final IllegalArgumentException e)
 
 		{
 
-			log.warn("Technology can't be found, update failed.");
+			this.log.warn("Technology can't be found, update failed.");
 			return null;
 		}
 	}

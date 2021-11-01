@@ -51,7 +51,7 @@ class TopicControllerTests {
 
 	@BeforeEach
 	void construct() throws JsonProcessingException {
-		this.topic = new Topic(1, "Test Topic", "A Topic for testing.", null, null);
+		this.topic = new Topic(1, 1, "Test Topic", "A Topic for testing.", null, null);
 		this.topicJson = objectMapper.writeValueAsString(this.topic);
 		
 		this.topicList = new LinkedList<Topic>();
@@ -85,12 +85,14 @@ class TopicControllerTests {
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.listJson) );
 	}
-
+	
 	@Test
 	void addTopic_returnsTopic() throws Exception {
 		when(this.service.save(this.topic)).thenReturn(this.topic);
 		
-		this.mvc.perform(post( PATH + "add" ).content(this.topicJson).contentType(MediaType.APPLICATION_JSON) )
+		this.mvc.perform(post( PATH + "add" )
+			.content(this.topicJson)
+			.contentType(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}
@@ -99,7 +101,9 @@ class TopicControllerTests {
 	void updateTopic_returnsTopic() throws Exception {
 		when(this.service.update(this.topic)).thenReturn(this.topic);
 		
-		this.mvc.perform(put( PATH + this.topic.getId()).content(this.topicJson).contentType(MediaType.APPLICATION_JSON))
+		this.mvc.perform(put( PATH + this.topic.getId())
+			.content(this.topicJson)
+			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.topicJson) );
 	}

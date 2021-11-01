@@ -81,19 +81,22 @@ class TechnologyControllerTests {
 	
 	@Test
 	void TestFindAllTechnologies() throws Exception {
-		List<Technology> techs = new ArrayList<>();
+		final List<Technology> techs = new ArrayList<>();
 		techs.add(tech);
 		when(this.techserv.findAll()).thenReturn(techs);
 		
 		this.mvc.perform(get( PATH ))
 			.andExpect( status().isOk() );
 	}
+
 	
 	@Test
 	void addTech_returnsTech() throws Exception {
 		when(this.techserv.insertTechnology(this.tech)).thenReturn(this.tech);
 		
-		this.mvc.perform(post( PATH + "add" ).content(this.techJson).contentType(MediaType.APPLICATION_JSON) )
+		this.mvc.perform(post( PATH + "add" )
+			.content(this.techJson)
+			.contentType(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.techJson) );
 	}
@@ -103,7 +106,9 @@ class TechnologyControllerTests {
 		final int id = this.tech.getTechId();
 		when(this.techserv.update(this.tech)).thenReturn(this.tech);
 		
-		this.mvc.perform(patch( PATH + id ).content(this.techJson).contentType(MediaType.APPLICATION_JSON) )
+		this.mvc.perform(patch( PATH + id )
+			.content(this.techJson)
+			.contentType(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.techJson) );
 	}

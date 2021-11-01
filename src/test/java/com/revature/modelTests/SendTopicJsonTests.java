@@ -1,6 +1,5 @@
 package com.revature.modelTests;
 
-
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanConstructor;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanEquals;
 import static com.google.code.beanmatchers.BeanMatchers.hasValidBeanHashCode;
@@ -12,15 +11,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.revature.model.CurriculumTopic;
+import com.revature.model.json.SendTopicJson;
 
-@SpringBootTest(classes=CurriculumTopic.class)
- class CurriculumTopicTests {
-
-    // One big test
+@SpringBootTest(classes=SendTopicJson.class)
+class SendTopicJsonTests {
+	// One big test
     @Test
     void testBean() {
-        assertThat(CurriculumTopic.class, allOf(
+        assertThat(SendTopicJson.class, allOf(
                 hasValidBeanConstructor(),
                 hasValidGettersAndSetters(),
                 hasValidBeanHashCode(),
@@ -33,26 +31,26 @@ import com.revature.model.CurriculumTopic;
 
     @Test
     void shouldHaveANoArgsConstructor() {
-        assertThat(CurriculumTopic.class, hasValidBeanConstructor());
+        assertThat(SendTopicJson.class, hasValidBeanConstructor());
     }
 
     @Test
     void gettersAndSettersShouldWorkForEachProperty() {
-        assertThat(CurriculumTopic.class, hasValidGettersAndSetters());
+        assertThat(SendTopicJson.class, hasValidGettersAndSetters());
     }
 
     @Test
     void allPropertiesShouldInfluenceHashCode() {
-        assertThat(CurriculumTopic.class, hasValidBeanHashCode());
+        assertThat(SendTopicJson.class, hasValidBeanHashCode());
     }
 
     @Test
     void allPropertiesShouldBeComparedDuringEquals() {
-        assertThat(CurriculumTopic.class, hasValidBeanEquals());
+        assertThat(SendTopicJson.class, hasValidBeanEquals());
     }
 
     @Test
     void allPropertiesShouldBeRepresentedInToStringOutput() {
-        assertThat(CurriculumTopic.class, hasValidBeanToString());
+        assertThat(SendTopicJson.class, hasValidBeanToString());
     }
 }

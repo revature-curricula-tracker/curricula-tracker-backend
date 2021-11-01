@@ -72,7 +72,7 @@ class CurriculumControllerTests {
 	}
 	@Test
 	void TestFindAllCurriculum() throws Exception {
-		List<Curriculum> curricula = new ArrayList<>();
+		final List<Curriculum> curricula = new ArrayList<>();
 		curricula.add(curriculum);
 		when(this.service.findAll()).thenReturn(curricula);
 		
@@ -86,22 +86,31 @@ class CurriculumControllerTests {
 		this.mvc.perform(delete( PATH +"/deleteById/"+ id ))
 			.andExpect( status().isOk() );
 	}
-
+	
+	
 	@Test
 	void addcurriculum_returnscurriculum() throws Exception {
 		when(this.service.insert(this.curriculum)).thenReturn(this.curriculum);
 		
-		this.mvc.perform(post( PATH + "add" ).content(this.curriculumJson).contentType(MediaType.APPLICATION_JSON) )
+		this.mvc.perform(post( PATH + "add" )
+			.content(this.curriculumJson)
+			.contentType(MediaType.APPLICATION_JSON)
+			.accept(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.curriculumJson) );
 	}
 
+	
 	@Test
 	void updatecurriculum_returnscurriculum() throws Exception {
 		when(this.service.update(this.curriculum)).thenReturn(this.curriculum);
 		
-		this.mvc.perform(post( PATH + "update").content(this.curriculumJson).contentType(MediaType.APPLICATION_JSON))
+		this.mvc.perform(post( PATH + "update")
+			.content(this.curriculumJson)
+			.contentType(MediaType.APPLICATION_JSON)
+			.accept(MediaType.APPLICATION_JSON) )
 			.andExpect( status().isOk() )
 			.andExpect( content().json(this.curriculumJson) );
+		
 	}
 }
