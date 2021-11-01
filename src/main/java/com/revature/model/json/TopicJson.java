@@ -1,5 +1,7 @@
 package com.revature.model.json;
 
+import java.io.Serializable;
+
 import com.revature.model.Curriculum;
 import com.revature.model.Technology;
 import com.revature.model.Topic;
@@ -11,9 +13,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SendTopicJson {
+public class TopicJson implements Serializable {
 	
-	public SendTopicJson(final Topic topic) {
+	private static final long serialVersionUID = -6574081803646618237L;
+
+	public TopicJson(final Topic topic) {
 		this.id = topic.getId();
 		this.topicDay = topic.getTopicDay();
 		this.name = topic.getName();
@@ -28,4 +32,8 @@ public class SendTopicJson {
 	private String description;
 	private Technology technology;
 	private Curriculum curriculum;
+	
+	public Topic constructTopic() {
+		return new Topic(this.id, this.topicDay, this.name, this.description, this.technology, this.curriculum);
+	}
 }
