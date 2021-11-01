@@ -27,5 +27,6 @@ phases:
    - docker push $REPOSITORY_URI:latest
    
   # Once this buildjob is finished and this image is pushed to ECR 
-  # that will trigger CodePipline #2 which will rollout the new image to
-  # replace the old on in the Kubernetes deployment
+  # Then, on an EC2, we are able to pull this image as the base image for
+  # the curricula-tracker-service within the docker-compose file
+  # when we run docker compose up inside the EC2
