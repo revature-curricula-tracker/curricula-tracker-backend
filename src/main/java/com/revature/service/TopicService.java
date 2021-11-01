@@ -63,6 +63,17 @@ public class TopicService {
 	 * @return 			the Topic object that was updated
 	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public List<Topic> updateByName(final String name, final Topic topic) {
+		this.topicDao.updateByName(name, topic.getName(), topic.getDescription(), topic.getTopicDay());
+		return this.topicDao.findByName(name);
+	}
+	
+	/**
+	 * Updates a Topic object in the database, and then returns the updated Topic.
+	 * @param 	topic	the Topic object to be updated
+	 * @return 			the Topic object that was updated
+	 */
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public Topic update(final Topic topic) {
 		return this.topicDao.save(topic);
 	}
@@ -83,6 +94,15 @@ public class TopicService {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void delete(final int id) {
 		this.topicDao.deleteById(id);
+	}
+	
+	/**
+	 * Deletes a Topic object with specified id in the database if it exists.
+	 * @param 	id	the id of the Topic object to be deleted
+	 */
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void deleteByName(final String name) {
+		this.topicDao.deleteByName(name);
 	}
 	
 }

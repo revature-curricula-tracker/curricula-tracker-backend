@@ -68,6 +68,15 @@ class TopicServiceTests {
 	}
 	
 	@Test
+	void update_returnsTopics() {
+		final List<Topic> list = new LinkedList<>();
+		list.add(this.topic);
+		
+		when(this.topicDao.findByName(this.topic.getName()) ).thenReturn(list);
+		assertEquals("update by name did not return the updated topics",this.service.updateByName(this.topic.getName(), this.topic), list);
+	}
+	
+	@Test
 	void deleteTopic_success() {
 		this.service.delete(this.topic);
 		assertEquals(1, this.topic.getId());
@@ -76,6 +85,12 @@ class TopicServiceTests {
 	@Test
 	void deleteId_success() {
 		this.service.delete(this.topic.getId());
+		assertEquals(1, this.topic.getId());
+	}
+	
+	@Test
+	void deleteByName_success() {
+		this.service.deleteByName(this.topic.getName());
 		assertEquals(1, this.topic.getId());
 	}
 	

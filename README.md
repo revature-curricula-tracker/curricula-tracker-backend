@@ -21,6 +21,8 @@ Curricula Tracker is an application that will track information related to cohor
 * Micrometer + Prometheus
 * AWS CodePipeline
 * AWS S3 Bucket
+* Docker
+* Angular
 
 # Features
 
