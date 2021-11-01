@@ -22,7 +22,7 @@ import com.revature.service.TechnologyService;
 
 @RestController
 @RequestMapping("/tech")
-@CrossOrigin(origins = CorsFilter.ORIGIN)
+@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.LOCALHOST})
 public class TechnologyController {
 
 	@Autowired
