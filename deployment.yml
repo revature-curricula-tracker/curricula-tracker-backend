@@ -18,7 +18,7 @@ spec:
       - name: curricula-tracker-backend
         image: 855430746673.dkr.ecr.us-east-1.amazonaws.com/curricula-tracker-ecr:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +30,5 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 5000
+      targetPort: 5000
