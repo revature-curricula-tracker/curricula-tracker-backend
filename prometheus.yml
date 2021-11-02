@@ -8,5 +8,5 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     static_configs:
     # define host + port number
-    # why accounts instead of localhost? The host name is Docker service name when calling another container
-    - targets: ['curricular-tracker-service:5000']
+    # why curricular instead of localhost? The host name is Docker service name when calling another container
+    - targets: ['curricula-tracker-service:5000']
