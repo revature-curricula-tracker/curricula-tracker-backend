@@ -30,25 +30,31 @@ The Curricula Tracker backend allows the user to create, read, update, and delet
 
 # Getting Started
 
-To install and deploy...
+After pulling the source code, simply execute the docker-compose.yml to run Zipkin, Prometheus, Grafana, and the Curricula-Tracker-Backend SpringBoot app in separate containers:
+Container 1: Grafana on port 3000
+Container 2: Prometheus on port 9090
+Container 3: Zipkin on port 9411
+Container 4: Curricula-tracker-backend Spring Boot App on port 5000
 
 # Usage
 
-* All curriculum end points are available at /curriculum/...
+* All curriculum endpoints are available at /curriculum/...
   - POST /add : insert a curricula by sending a curriculum object in the body of a post request
   - GET / : finds all curricula and returns a list
   - GET /findId/{id} : finds a specific curricula by its id number in the path variable
   - GET /findName/{name} : finds a specific curricula by name as a path variable
   - POST /update : updates a curricula object from a post request body
   - DELETE /deleteById/{id} : deletes a curricula by its id as a path variable
-* All topic end points are available at /topics/...
+* All topic endpoints are available at /topics/...
   - POST /add : inserts a topic by taking an object in the body of a post request
   - GET / : finds all topics returned as a list
   - GET /{id} : finds a specific topic by its id as a path variable
   - GET /search/{name} : finds a topic by name as a path variable
   - PUT /{id} : updates a topic by taking its id as a path variable and topic object in the body of a put request
+  - PUT /byname/{name} : updates a topic by taking its name as a path variable and topic object in the body of a put request
   - DELETE /{id} : delete a topic by id by sending a delete request with id as a path variable
-* All technology end points are available at /tech/...
+  - DELETE /byname/{name} : delete a topic by name by sending a delete request with name as a path variable
+* All technology endpoints are available at /tech/...
   - POST /add : inserts a technology object from the body of a post request
   - GET / : finds all technologies returned as a list
   - GET /{id} : finds a specific technology by its id in a path variable
