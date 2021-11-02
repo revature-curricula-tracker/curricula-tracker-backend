@@ -17,7 +17,7 @@ public interface TopicDao extends JpaRepository<Topic, Integer> {
 	void deleteByName(String name);
 	
 	@Modifying
-	@Query("UPDATE com.revature.model.Topic SET name = ?2, description = ?3, topicDay = ?4 WHERE name = ?1")
-	void updateByName(String curName, String newName, String desc, int day);
+	@Query("UPDATE com.revature.model.Topic SET name = ?2, description = ?3 WHERE name = ?1")
+	void updateByName(String curName, String newName, String desc);
 	
 }
