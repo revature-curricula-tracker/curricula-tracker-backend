@@ -16,9 +16,10 @@ import com.revature.repository.TechnologyDao;
 @Service
 public class TechnologyService {
 	
+	private static final Logger logger = LoggerFactory.getLogger(TechnologyService.class);
+	
 	@Autowired
 	private TechnologyDao tDao;
-	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * Returns a list of all Technologies stored in the database.
@@ -74,7 +75,7 @@ public class TechnologyService {
 			this.tDao.deleteById(id);
 			return true;
 		} catch (final IllegalArgumentException e) {
-			this.log.warn("ID can't be pulled.");
+			logger.warn("deleteById(ID can't be pulled.");
 			return false;
 		}
 	}
@@ -95,6 +96,7 @@ public class TechnologyService {
 				return this.tDao.save(tech);
 			} else {
 				throw new IllegalArgumentException();
+				
 			}
 		}
 
@@ -102,7 +104,7 @@ public class TechnologyService {
 
 		{
 
-			this.log.warn("Technology can't be found, update failed.");
+			logger.warn("update(Technology) can't be found, update failed.");
 			return null;
 		}
 	}
