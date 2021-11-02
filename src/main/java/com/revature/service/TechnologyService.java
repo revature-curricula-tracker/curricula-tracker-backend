@@ -20,7 +20,6 @@ public class TechnologyService {
 	
 	@Autowired
 	private TechnologyDao tDao;
-	private Logger log = LoggerFactory.getLogger(this.getClass());
 
 	/**
 	 * Returns a list of all Technologies stored in the database.
