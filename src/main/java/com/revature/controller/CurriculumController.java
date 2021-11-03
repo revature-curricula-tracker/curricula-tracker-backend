@@ -22,7 +22,6 @@ import com.revature.service.CurriculumService;
 
 @RestController
 @RequestMapping("/curriculum")
-@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.ORIGIN_NEW})
 public class CurriculumController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CurriculumController.class);
