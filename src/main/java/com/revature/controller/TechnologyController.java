@@ -24,7 +24,6 @@ import com.revature.service.TechnologyService;
 
 @RestController
 @RequestMapping("/tech")
-@CrossOrigin(origins = {CorsFilter.ORIGIN, CorsFilter.ORIGIN_NEW})
 public class TechnologyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TechnologyController.class);
