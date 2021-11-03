@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.advice.CorsFilter;
 import com.revature.model.Topic;
 import com.revature.model.json.TopicJson;
 import com.revature.service.TopicService;
