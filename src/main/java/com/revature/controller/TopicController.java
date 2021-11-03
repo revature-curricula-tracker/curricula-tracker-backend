@@ -25,7 +25,6 @@ import com.revature.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")
-@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.ORIGIN_NEW})
 public class TopicController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TopicController.class);
