@@ -14,8 +14,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 @WebFilter("/*")
 public class CorsFilter extends OncePerRequestFilter {
-	public static final String ORIGIN = "http://curricula-tracker.s3-website-us-east-1.amazonaws.com/";
-	public static final String ORIGIN_NEW = "http://http://curricula-tracker.s3-website-us-east-1.amazonaws.com/";
+	public static final String ORIGIN = "http://curricula-tracker.s3-website-us-east-1.amazonaws.com";
+	public static final String ORIGIN_NEW = "http://http://curricula-tracker.s3-website-us-east-1.amazonaws.com";
 	
 	
 	
