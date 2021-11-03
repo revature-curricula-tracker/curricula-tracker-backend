@@ -16,13 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.advice.CorsFilter;
 import com.revature.model.Curriculum;
 import com.revature.service.CurriculumService;
 
 @RestController
 @RequestMapping("/curriculum")
-@CrossOrigin(origins = {CorsFilter.ORIGIN,CorsFilter.ORIGIN_NEW})
 public class CurriculumController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CurriculumController.class);

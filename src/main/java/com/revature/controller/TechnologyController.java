@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.advice.CorsFilter;
 import com.revature.model.Technology;
 import com.revature.service.TechnologyService;
 
 @RestController
 @RequestMapping("/tech")
-@CrossOrigin(origins = {CorsFilter.ORIGIN, CorsFilter.ORIGIN_NEW})
 public class TechnologyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TechnologyController.class);
